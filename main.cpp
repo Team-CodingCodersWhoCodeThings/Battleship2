@@ -92,18 +92,15 @@ int main(int argc, const char* argv[])
   player1.setShipCount(numberShips);
   Player player2;
   player2.setShipCount(numberShips);
-  player1.createBoard();
-  std::cout << "\n\nPLAYER 1'S GAME BOARD:\n\n";
+  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 2 look away, it's Player 1's turn to add ships \n\n\n====================\n\n\n";
   player1.printBoard();
-  player2.createBoard();
-  std::cout << "\n\nPLAYER 2'S GAME BOARD:\n\n";
-  player2.printBoard();
-  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n====================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 2 look away, it's Player 1's turn to add ships \n\n\n====================\n\n\n";
   std::cout << "\nPlayer 1: ";
   player1.addShip(numberShips);
-  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n====================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 1 look away, it's Player 2's turn to add ships \n\n\n====================\n\n\n";
+  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 1 look away, it's Player 2's turn to add ships \n\n\n====================\n\n\n";
+  player2.printBoard();
   std::cout << "\nPlayer 2: ";
   player2.addShip(numberShips);
+  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
   bool gameOver = false;
   int row;

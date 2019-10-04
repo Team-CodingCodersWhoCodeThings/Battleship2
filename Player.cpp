@@ -6,10 +6,6 @@ Player::Player()
   shipDirection = "";
   //shipPosition = "";
   shipRow = 0;
-}
-
-void Player::createBoard()
-{
   for(int x = 1; x < m_rows; x++)
   {
     for(int y = 1; y < m_cols; y++)

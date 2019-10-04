@@ -13,13 +13,6 @@ public:
   **/
   Player();
 
-  /**
-  * @pre: valid player object is created
-  * @post: creates the board for the respective player
-  * @param: none
-  * @return: nothing
-  **/
-  void createBoard();
 
   /**
   * @pre: valid player object is created
