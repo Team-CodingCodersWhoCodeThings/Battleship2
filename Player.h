@@ -1,6 +1,6 @@
 #ifndef Player_h
 #define Player_h
-#include "Ship.h"
+#include<iostream>
 
 class Player
 {
@@ -31,7 +31,7 @@ public:
   * @param: col - the column where the player wants to attack
   * @return: nothing
   **/
-  void fire(std::string coords);
+  void incomingShot(std::string coords);
 
   /**
   * @pre: verify input from user, and make sure the input for column is upper case.
@@ -72,7 +72,9 @@ public:
   * @param: none
   * @return: weather or not this player won
   **/
-  bool checkForWin();
+  bool gameOver();
+
+  bool isShipSunk(char shipType);
 
 
 private:
@@ -80,10 +82,9 @@ private:
   const static int m_cols = 8;
   char gameBoard[m_cols][m_rows];
   int m_shipCount = 0;
-  std::vector<Ship> m_ships;
-  std::string shipDirection;
-  int shipRow;
-  char shipColumn;
+  bool checkShipLength(int length, std::string start, std::string end);
+  bool checkShipPosition(std::string start, std::string end);
+  void placeShip(int length, std::string start, std::string end);
 
 
 };

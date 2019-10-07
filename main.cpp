@@ -1,4 +1,5 @@
 #include "Player.h"
+#include<iostream>
 #include <chrono>
 #include <thread>
 
@@ -24,11 +25,11 @@ int main(int argc, const char* argv[])
   std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 2 look away, it's Player 1's turn to add ships \n\n\n====================\n\n\n";
   player1.printBoard();
   std::cout << "\nPlayer 1: ";
-  player1.addShips(numberShips[0] - 49);
+  player1.addShips(numberShips[0] - 48);
   std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 1 look away, it's Player 2's turn to add ships \n\n\n====================\n\n\n";
   player2.printBoard();
   std::cout << "\nPlayer 2: ";
-  player2.addShips(numberShips[0] - 49);
+  player2.addShips(numberShips[0] - 48);
   std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
   bool gameOver = false;
@@ -47,9 +48,9 @@ int main(int argc, const char* argv[])
       std::cout << "Player 1, choose a coordinate to fire on. (ex. F3)\n";
       std::cin >> coords;
     }
-    player2.fire(coords); //player 1 attacks player 2's game board
+    player2.incomingShot(coords); //player 1 attacks player 2's game board
 
-    if(player2.checkForWin())
+    if(player2.gameOver())
     {
       gameOver = true;
       std::cout << "\n\nPlayer 1 sunk all of Player 2's battleships! Player 1 wins! \n";
@@ -72,9 +73,9 @@ int main(int argc, const char* argv[])
       std::cin >> coords;
 
     }
-    player1.fire(coords); //player 2 attacks player 1's game board
+    player1.incomingShot(coords); //player 2 attacks player 1's game board
 
-    if(player1.checkForWin())
+    if(player1.gameOver())
     {
       gameOver = true;
       std::cout << "\n\nPlayer 2 sunk all of Player 1's battleships! Player 2 wins! \n";
