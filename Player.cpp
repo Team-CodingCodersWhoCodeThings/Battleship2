@@ -231,6 +231,7 @@ int Player::convertCoordinate(char coord)///Converts coordinates in char to int 
   {
     return(coord - 49);
   }
+  return 0;
 }
 
 bool Player::checkShipLength(int length, std::string start, std::string end)///Function checking that start and endpoints are in a straight line and right distance apart.
@@ -261,6 +262,7 @@ bool Player::checkShipLength(int length, std::string start, std::string end)///F
       return false;
     }
   }
+  return false;
 }
 
 bool Player::checkShipPosition(std::string start, std::string end)///Checks that there are no ships in a specified line.
@@ -338,16 +340,16 @@ void Player::placeShip(int length, std::string start, std::string end)///Actuall
   {
     if(startRow > endRow)
     {
-      for(int i = endRow; i <= startRow; i++)
+      for(int i = 0; i < length; i++)
       {
-        gameBoard[startCol][i] = curShip;
+        gameBoard[startCol][i + endRow] = curShip;
       }
     }
     else if(startRow < endRow)
     {
-      for(int i = startRow; i <= endRow; i++)
+      for(int i = 0; i < length; i++)
       {
-        gameBoard[startCol][i] = curShip;
+        gameBoard[startCol][i + startRow] = curShip;
       }
     }
     else
@@ -359,16 +361,16 @@ void Player::placeShip(int length, std::string start, std::string end)///Actuall
   {
     if(startCol > endCol)
     {
-      for(int i = startCol; i <= endCol; i++)
+      for(int i = 0; i < length; i++)
       {
-        gameBoard[i][startRow] = curShip;
+        gameBoard[i + endCol][startRow] = curShip;
       }
     }
     else if(startCol < endCol)
     {
-      for(int i = startCol; i <= endCol; i++)
+      for(int i = 0; i < length; i++)
       {
-        gameBoard[i][startRow] = curShip;
+        gameBoard[i + startCol][startRow] = curShip;
       }
     }
   }
