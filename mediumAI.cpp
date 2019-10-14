@@ -1,7 +1,7 @@
 #include "mediumAI.h"
 #include <iostream>
 
-mediumAI()
+mediumAI::mediumAI()
 {
   for(int x = 0; x < m_rows; x++)
   {
