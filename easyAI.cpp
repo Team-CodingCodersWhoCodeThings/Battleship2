@@ -1,7 +1,7 @@
 #include "easyAI.h"
 #include <iostream>
 
-easyAI()
+easyAI::easyAI()
 {
   for(int x = 0; x < m_rows; x++)
   {

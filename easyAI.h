@@ -20,6 +20,6 @@ class easyAI
     const static int m_cols = 8;
     char gameBoard[m_cols][m_rows];
     int m_shipCount = 0;
-}
+};
 
 #endif
