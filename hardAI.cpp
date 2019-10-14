@@ -1,7 +1,7 @@
 #include "hardAI.h"
 #include <iostream>
 
-hardAI()
+hardAI::hardAI()
 {
   for(int x = 0; x < m_rows; x++)
   {
