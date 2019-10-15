@@ -3,11 +3,17 @@
 
 mediumAI::mediumAI()
 {
-  for(int x = 0; x < m_rows; x++)
+  gameBoard = new char *[8];
+  for (int i = 0; i < 8; i++)
   {
-    for(int y = 0; y < m_cols; y++)
+    gameBoard[i] = new char[8];
+  }
+  /// Creating the 2D array.
+  for (int i = 0; i < 8; i++)
+  {
+    for (int j = 0; j < 8; j++)
     {
-      gameBoard[x][y] = '#'; //BLANK BOARD SPACE
+      gameBoard[i][j] = '#';
     }
   }
 
@@ -28,6 +34,14 @@ mediumAI::mediumAI()
   }
 
   roundsLeftToShoot = 0;
+}
+
+mediumAI::~mediumAI() {
+  for (int i = 0; i < 8; i++)
+  {
+    delete gameBoard[i];
+  }
+  delete gameBoard;   
 }
 
 void mediumAI::printBoard()
@@ -121,8 +135,9 @@ void mediumAI::incomingShot(std::string coords)
   }
 }
 
-std::string mediumAI::fireOnPlayer()
+std::string mediumAI::fireOnPlayer(Player& player)
 {
+  char** playerGameBoard = player.getGameBoard();
   int row;
   int col;
   if (prevHitSpot[0] == -1 && prevHitSpot[1] == -1 && roundsLeftToShoot == 0) {
@@ -132,7 +147,7 @@ std::string mediumAI::fireOnPlayer()
     } while (firedSpot[row][col] != false);
     firedSpot[row][col] = true;
 
-    if (gameBoard[row][col] == 'T') {
+    if (playerGameBoard[row][col] == 'T') {
       prevHitSpot[0] = -1;
       prevHitSpot[1] = -1;
       originalHitSpot[0] = -1;
@@ -140,7 +155,7 @@ std::string mediumAI::fireOnPlayer()
       roundsLeftToShoot = 0;
     }
 
-    if (gameBoard[row][col] == 'S') {
+    if (playerGameBoard[row][col] == 'S') {
       prevHitSpot[0] = row;
       prevHitSpot[1] = col;
       originalHitSpot[0] = row;
@@ -148,7 +163,7 @@ std::string mediumAI::fireOnPlayer()
       roundsLeftToShoot = 1;
     }
 
-    if (gameBoard[row][col] == 'D') {
+    if (playerGameBoard[row][col] == 'D') {
       prevHitSpot[0] = row;
       prevHitSpot[1] = col;
       originalHitSpot[0] = row;
@@ -156,7 +171,7 @@ std::string mediumAI::fireOnPlayer()
       roundsLeftToShoot = 2;
     }
 
-    if (gameBoard[row][col] == 'B') {
+    if (playerGameBoard[row][col] == 'B') {
       prevHitSpot[0] = row;
       prevHitSpot[1] = col;
       originalHitSpot[0] = row;
@@ -164,7 +179,7 @@ std::string mediumAI::fireOnPlayer()
       roundsLeftToShoot = 3;
     }
 
-    if (gameBoard[row][col] == 'C') {
+    if (playerGameBoard[row][col] == 'C') {
       prevHitSpot[0] = row;
       prevHitSpot[1] = col;
       originalHitSpot[0] = row;
@@ -172,24 +187,24 @@ std::string mediumAI::fireOnPlayer()
       roundsLeftToShoot = 4;
     }
   } else {
-    char previousShipType = gameBoard[prevHitSpot[0]][prevHitSpot[1]];
+    char previousShipType = playerGameBoard[prevHitSpot[0]][prevHitSpot[1]];
     // determine direction 'up', 'down', 'left', 'right' that could find the next spot up the current ship
-    if (prevHitSpot[0] - 1 >= 0 && gameBoard[prevHitSpot[0] - 1][prevHitSpot[1]] == previousShipType) {
+    if (prevHitSpot[0] - 1 >= 0 && playerGameBoard[prevHitSpot[0] - 1][prevHitSpot[1]] == previousShipType) {
       roundsLeftToShoot--;
       prevHitSpot[0] = prevHitSpot[0] - 1;
       row = prevHitSpot[0];
       col = prevHitSpot[1];
-    } else if (prevHitSpot[0] + 1 < 8 && gameBoard[prevHitSpot[0] + 1][prevHitSpot[1]] == previousShipType) {
+    } else if (prevHitSpot[0] + 1 < 8 && playerGameBoard[prevHitSpot[0] + 1][prevHitSpot[1]] == previousShipType) {
       roundsLeftToShoot--;
       prevHitSpot[0] = prevHitSpot[0] + 1;
       row = prevHitSpot[0];
       col = prevHitSpot[1];
-    } else if (prevHitSpot[1] - 1 >= 0 && gameBoard[prevHitSpot[0]][prevHitSpot[1] - 1] == previousShipType) {
+    } else if (prevHitSpot[1] - 1 >= 0 && playerGameBoard[prevHitSpot[0]][prevHitSpot[1] - 1] == previousShipType) {
       roundsLeftToShoot--;
       prevHitSpot[1] = prevHitSpot[1] - 1;
       row = prevHitSpot[0];
       col = prevHitSpot[1];
-    } else if (prevHitSpot[1] + 1 < 8 && gameBoard[prevHitSpot[0]][prevHitSpot[1] + 1] == previousShipType) {
+    } else if (prevHitSpot[1] + 1 < 8 && playerGameBoard[prevHitSpot[0]][prevHitSpot[1] + 1] == previousShipType) {
       roundsLeftToShoot--;
       prevHitSpot[1] = prevHitSpot[1] + 1;
       row = prevHitSpot[0];
@@ -197,7 +212,7 @@ std::string mediumAI::fireOnPlayer()
     } else { // still has rounds left to shoot, but can't find a spot. Then go back to the original hit spot, and try the opposite direction.
       prevHitSpot[0] = originalHitSpot[0];
       prevHitSpot[1] = originalHitSpot[1];
-      return fireOnPlayer();
+      return fireOnPlayer(player);
     }
   }
 
