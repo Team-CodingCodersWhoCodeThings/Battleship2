@@ -76,11 +76,12 @@ public:
 
   bool isShipSunk(char shipType);
 
+  char** getGameBoard();
 
 private:
   const static int m_rows = 8;
   const static int m_cols = 8;
-  char gameBoard[m_cols][m_rows];
+  char** gameBoard;
   int m_shipCount = 0;
   bool checkShipLength(int length, std::string start, std::string end);
   bool checkShipPosition(std::string start, std::string end);

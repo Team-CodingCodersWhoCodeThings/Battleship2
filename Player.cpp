@@ -4,11 +4,17 @@
 
 Player::Player()
 {
-  for(int x = 0; x < m_rows; x++)
+  gameBoard = new char *[8];
+  for (int i = 0; i < 8; i++)
   {
-    for(int y = 0; y < m_cols; y++)
+    gameBoard[i] = new char[8];
+  }
+  /// Creating the 2D array.
+  for (int i = 0; i < 8; i++)
+  {
+    for (int j = 0; j < 8; j++)
     {
-      gameBoard[x][y] = '#'; //BLANK BOARD SPACE
+      gameBoard[i][j] = '#';
     }
   }
 }
@@ -374,4 +380,8 @@ void Player::placeShip(int length, std::string start, std::string end)///Actuall
       }
     }
   }
+}
+
+char** Player::getGameBoard() {
+  return gameBoard;
 }
