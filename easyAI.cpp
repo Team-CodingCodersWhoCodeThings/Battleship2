@@ -10,6 +10,14 @@ easyAI::easyAI()
       gameBoard[x][y] = '#'; //BLANK BOARD SPACE
     }
   }
+  
+  for(int x = 0; x < m_rows; x++)
+  {
+    for(int y = 0; y < m_cols; y++)
+    {
+      firedSpot[x][y] = false; //marked as not hit
+    }
+  }
 }
 
 void easyAI::printBoard()
@@ -103,14 +111,24 @@ void easyAI::incomingShot(std::string coords)
   }
 }
 
+
+// returns an coordinate to fire on
 std::string easyAI::fireOnPlayer()
 {
-  //returns a coordinate for AI to fire on. needs implementation
+  int row;
+  int col;
+  do {
+    row = rand() % 8;
+    col = rand() % 8;
+  } while (firedSpot[row][col] != false);
+  firedSpot[row][col] = true;
+  char rowArr[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+  return rowArr[row] + std::to_string(col+1);
 }
 
 void easyAI::addShips(int numbShips)
 {
-  //needs implementation
+
 }
 
 bool easyAI::validCoordinates(std::string& coords)
