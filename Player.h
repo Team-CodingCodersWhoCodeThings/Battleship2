@@ -13,6 +13,8 @@ public:
   **/
   Player();
 
+  ~Player();
+
 
   /**
   * @pre: valid player object is created

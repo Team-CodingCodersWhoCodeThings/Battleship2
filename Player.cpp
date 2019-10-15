@@ -19,6 +19,14 @@ Player::Player()
   }
 }
 
+Player::Player() {
+  for (int i = 0; i < 8; i++)
+  {
+    delete gameBoard[i];
+  }
+  delete gameBoard;
+}
+
 void Player::printBoard()
 {
   std::cout << "  A B C D E F G H"; //COLUMN LABELS
