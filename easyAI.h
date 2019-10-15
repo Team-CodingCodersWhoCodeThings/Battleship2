@@ -1,11 +1,13 @@
 #ifndef EASYAI_H
 #define EASYAI_H
 #include<iostream>
+#include "Player.h"
 
 class easyAI
 {
   public:
     easyAI();
+    ~easyAI();
     void printBoard();
     void printAttackBoard();
     void incomingShot(std::string coords);
@@ -18,7 +20,7 @@ class easyAI
   private:
     const static int m_rows = 8;
     const static int m_cols = 8;
-    char gameBoard[m_rows][m_cols];
+    char** gameBoard;
     int m_shipCount = 0;
     bool firedSpot[m_rows][m_cols];
 };
