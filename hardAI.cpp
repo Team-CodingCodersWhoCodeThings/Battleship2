@@ -16,6 +16,13 @@ hardAI::hardAI()
       gameBoard[i][j] = '#';
     }
   }
+
+
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      opponentGameBoard[i][j] = '#';
+    }
+  }
 }
 
 hardAI::~hardAI() {
@@ -119,7 +126,26 @@ void hardAI::incomingShot(std::string coords)
 
 std::string hardAI::fireOnPlayer()
 {
-  //returns a coordinate for AI to fire on. needs implementation
+  //returns a coordinate for AI to fire on
+  int row = 0;
+  int col = 0;
+  char rowArr[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      if (opponentGameBoard[i][j] == 'T' ||
+          opponentGameBoard[i][j] == 'S' ||
+          opponentGameBoard[i][j] == 'D' ||
+          opponentGameBoard[i][j] == 'B' ||
+          opponentGameBoard[i][j] == 'C'
+      ) {
+        row = i;
+        col = j;
+        opponentGameBoard[i][j] = 'X';
+        return rowArr[row] + std::to_string(col+1);
+      }
+    }
+  }
+  return rowArr[row] + std::to_string(col+1);
 }
 
 void hardAI::addShips(int numbShips)
@@ -191,4 +217,14 @@ bool hardAI::isShipSunk(char shipType)
     }
   }
   return isSunk;
+}
+
+
+void hardAI::getAndStoreOpponentBoard(Player& player) {
+  char** playerGameBoard = player.getGameBoard();
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      opponentGameBoard[i][j] = playerGameBoard[i][j];
+    }
+  }
 }
