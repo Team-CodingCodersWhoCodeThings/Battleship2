@@ -11,7 +11,7 @@ public:
   * @param: none
   * @return: nothing
   **/
-  Player();
+  Player(bool salvo);
 
   ~Player();
 
@@ -85,6 +85,7 @@ private:
   const static int m_cols = 8;
   char** gameBoard;
   int m_shipCount = 0;
+  bool salvoMode = false;
   bool checkShipLength(int length, std::string start, std::string end);
   bool checkShipPosition(std::string start, std::string end);
   void placeShip(int length, std::string start, std::string end);
