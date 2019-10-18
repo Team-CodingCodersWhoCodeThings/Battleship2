@@ -2,8 +2,9 @@
 #include<iostream>
 #include<string>
 
-Player::Player()
+Player::Player(bool salvo)
 {
+  salvoMode = salvo;
   gameBoard = new char *[8];
   for (int i = 0; i < 8; i++)
   {
@@ -84,15 +85,22 @@ void Player::incomingShot(std::string coords)
   }
   else if(gameBoard[col][row] == ('M' || 'X'))
   {
-    std::string newCoords = "";
-    std::cout << "You already fired here. Try another position.\n";
-    std::cin >> newCoords;
-    while(!validCoordinates(newCoords))
+    if(salvoMode == false)
     {
-      std::cout << "Please input valid coordinates.\n";
+      std::string newCoords = "";
+      std::cout << "You already fired here. Try another position.\n";
       std::cin >> newCoords;
+      while(!validCoordinates(newCoords))
+      {
+        std::cout << "Please input valid coordinates.\n";
+        std::cin >> newCoords;
+      }
+      incomingShot(newCoords);
     }
-    incomingShot(newCoords);
+    else
+    {
+      std::cout << "You missed.\n";
+    }
   }
   else
   {
