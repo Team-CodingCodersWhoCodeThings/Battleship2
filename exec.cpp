@@ -17,7 +17,7 @@ void exec::run()
     std::cout << "1. Play against a friend\n";
     std::cout << "2. Play against an AI opponent\n";
     std::cout << "3. Read Instructions\n";
-    std::cout << "4. View the leaderboard\n"
+    std::cout << "4. View the leaderboard\n";
     std::cout << "5. Quit\n";
     std::string menuInput = "";
     bool badMenuInput = true;
@@ -234,7 +234,9 @@ void exec::pvpSalvo()
     player2.printAttackBoard();
     std::cout << "\nPLAYER 1'S BOARD:\n";
     player1.printBoard();
-    coords = {"","","","",""};
+    for (int i = 0; i < 5; i++) {
+      coords[i] = "";
+    }
     for(int i = 0; i < 5; i++)
     {
       while (!(player1.validCoordinates(coords[i])))
@@ -264,7 +266,9 @@ void exec::pvpSalvo()
     player1.printAttackBoard();
     std::cout << "\nPLAYER 2'S BOARD:\n";
     player2.printBoard();
-    coords = {"","","","",""};
+    for (int i = 0; i < 5; i++) {
+      coords[i] = "";
+    }
     for(int i = 0; i < 5; i++)
     {
       while (!(player2.validCoordinates(coords[i])))
@@ -305,12 +309,12 @@ void exec::pveEasy()
   }
 
   Player player(false);
-  easyAI AIplayer();
-  std::cout << "\n\n\n\n;
+  easyAI* AIplayer = new easyAI();
+  std::cout << "\n\n\n\n";
   player.printBoard();
   std::cout << "\nPlayer: ";
   player.addShips(numberShips[0] - 48);
-  AIplayer.addShips(numberShips[0] - 48);
+  AIplayer->addShips(numberShips[0] - 48);
   std::cout << "\n\n\n\n";
 
   bool gameOver = false;
@@ -320,27 +324,27 @@ void exec::pveEasy()
     std::cout << "\n\n\n";
 
     std::cout << "\n\nYOUR ATTACK BOARD:\n";
-    AIplayer.printAttackBoard();
+    AIplayer->printAttackBoard();
     std::cout << "\nYOUR BOARD:\n";
     player.printBoard();
     coords = "";
-    while (!(player1.validCoordinates(coords)))
+    while (!(player.validCoordinates(coords)))
     {
       std::cout << "Player, choose a coordinate to fire on. (ex. F3)\n";
       std::cin >> coords;
     }
-    AIplayer.incomingShot(coords); //player 1 attacks player 2's game board
+    AIplayer->incomingShot(coords); //player 1 attacks player 2's game board
 
-    if(AIplayer.gameOver())
+    if(AIplayer->gameOver())
     {
       gameOver = true;
       std::cout << "\n\nPlayer sunk all of the easy AI's ships! Player wins! \n";
-      AIplayer.printAttackBoard();
+      AIplayer->printAttackBoard();
       break;
     }
     std::this_thread::sleep_for(interval);
 
-    coords = AIplayer.fireOnPlayer();
+    coords = AIplayer->fireOnPlayer();
     player.incomingShot(coords); //player 2 attacks player 1's game board
 
     if(player.gameOver())
@@ -351,6 +355,7 @@ void exec::pveEasy()
     }
     std::this_thread::sleep_for(interval);
   }
+  delete AIplayer;
 }
 
 void exec::pveMedium()
@@ -370,12 +375,12 @@ void exec::pveMedium()
   }
 
   Player player(false);
-  mediumAI AIplayer();
-  std::cout << "\n\n\n\n;
+  mediumAI* AIplayer = new mediumAI();
+  std::cout << "\n\n\n\n";
   player.printBoard();
   std::cout << "\nPlayer: ";
   player.addShips(numberShips[0] - 48);
-  AIplayer.addShips(numberShips[0] - 48);
+  AIplayer->addShips(numberShips[0] - 48);
   std::cout << "\n\n\n\n";
 
   bool gameOver = false;
@@ -385,27 +390,27 @@ void exec::pveMedium()
     std::cout << "\n\n\n";
 
     std::cout << "\n\nYOUR ATTACK BOARD:\n";
-    AIplayer.printAttackBoard();
+    AIplayer->printAttackBoard();
     std::cout << "\nYOUR BOARD:\n";
     player.printBoard();
     coords = "";
-    while (!(player1.validCoordinates(coords)))
+    while (!(player.validCoordinates(coords)))
     {
       std::cout << "Player, choose a coordinate to fire on. (ex. F3)\n";
       std::cin >> coords;
     }
-    AIplayer.incomingShot(coords); //player 1 attacks player 2's game board
+    AIplayer->incomingShot(coords); //player 1 attacks player 2's game board
 
-    if(AIplayer.gameOver())
+    if(AIplayer->gameOver())
     {
       gameOver = true;
       std::cout << "\n\nPlayer sunk all of the medium AI's ships! Player wins! \n";
-      AIplayer.printAttackBoard();
+      AIplayer->printAttackBoard();
       break;
     }
     std::this_thread::sleep_for(interval);
 
-    coords = AIplayer.fireOnPlayer(player);
+    coords = AIplayer->fireOnPlayer(player);
     player.incomingShot(coords); //player 2 attacks player 1's game board
 
     if(player.gameOver())
@@ -416,6 +421,7 @@ void exec::pveMedium()
     }
     std::this_thread::sleep_for(interval);
   }
+  delete AIplayer;
 }
 
 void exec::pveHard()
@@ -435,13 +441,13 @@ void exec::pveHard()
   }
 
   Player player(false);
-  HardAI AIplayer();
-  std::cout << "\n\n\n\n;
+  hardAI* AIplayer = new hardAI();
+  std::cout << "\n\n\n\n";
   player.printBoard();
   std::cout << "\nPlayer: ";
   player.addShips(numberShips[0] - 48);
-  AIplayer.addShips(numberShips[0] - 48);
-  AIplayer.getAndStoreOpponentBoard(player);
+  AIplayer->addShips(numberShips[0] - 48);
+  AIplayer->getAndStoreOpponentBoard(player);
   std::cout << "\n\n\n\n";
 
   bool gameOver = false;
@@ -451,27 +457,27 @@ void exec::pveHard()
     std::cout << "\n\n\n";
 
     std::cout << "\n\nYOUR ATTACK BOARD:\n";
-    AIplayer.printAttackBoard();
+    AIplayer->printAttackBoard();
     std::cout << "\nYOUR BOARD:\n";
     player.printBoard();
     coords = "";
-    while (!(player1.validCoordinates(coords)))
+    while (!(player.validCoordinates(coords)))
     {
       std::cout << "Player, choose a coordinate to fire on. (ex. F3)\n";
       std::cin >> coords;
     }
-    AIplayer.incomingShot(coords); //player 1 attacks player 2's game board
+    AIplayer->incomingShot(coords); //player 1 attacks player 2's game board
 
-    if(AIplayer.gameOver())
+    if(AIplayer->gameOver())
     {
       gameOver = true;
       std::cout << "\n\nPlayer sunk all of the hard AI's ships! Player wins! \n";
-      AIplayer.printAttackBoard();
+      AIplayer->printAttackBoard();
       break;
     }
     std::this_thread::sleep_for(interval);
 
-    coords = AIplayer.fireOnPlayer();
+    coords = AIplayer->fireOnPlayer();
     player.incomingShot(coords); //player 2 attacks player 1's game board
 
     if(player.gameOver())
@@ -482,4 +488,5 @@ void exec::pveHard()
     }
     std::this_thread::sleep_for(interval);
   }
+  delete AIplayer;
 }
