@@ -8,8 +8,8 @@ class mediumAI
   public:
     mediumAI();
     ~mediumAI();
-    void printBoard();
-    void printAttackBoard();
+    void printBoard();///prints out board.
+    void printAttackBoard();///
     void incomingShot(std::string coords);
     std::string fireOnPlayer(Player& player);
     void addShips(int numbShips);

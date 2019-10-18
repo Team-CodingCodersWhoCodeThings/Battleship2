@@ -60,9 +60,12 @@ void exec::run()
       {
         pvpSalvo();
       }
-      std::cout << "Press Enter to return to the menu."; //user can view leaderboard until they hit enter to return to menu.
-      std::cin >> menuInput;
-      std::cout << "\n\n\n\n";
+
+
+//VIEW LEADERBOARD
+
+
+
     }
     else if(menuInput == "2")
     {
@@ -94,9 +97,14 @@ void exec::run()
       {
         pveHard();
       }
-      std::cout << "Press Enter to return to the menu."; //user can view leaderboard until they hit enter to return to menu.
-      std::cin >> menuInput;
-      std::cout << "\n\n\n\n";
+      // std::cout << "Press Enter to return to the menu."; //user can view leaderboard until they hit enter to return to menu.
+      // std::cin >> menuInput;
+      // std::cout << "\n\n\n\n";
+
+      //LEADERBOARD
+
+
+
     }
     else if(menuInput == "3")
     {
@@ -108,6 +116,7 @@ void exec::run()
     }
     else if(menuInput == "5")
     {
+
       stillPlaying = false;
       std::cout << '\n';
     }
@@ -133,22 +142,24 @@ void exec::pvpRegular()
 
   Player player1(false);
   Player player2(false);
-  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 2 look away, it's Player 1's turn to add ships \n\n\n====================\n\n\n";
+  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 2 look away, it's Player 1's turn to add ships \n\n\n====================\n\n\n";
   player1.printBoard();
   std::cout << "\nPlayer 1: ";
   player1.addShips(numberShips[0] - 48);
-  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 1 look away, it's Player 2's turn to add ships \n\n\n====================\n\n\n";
+  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 1 look away, it's Player 2's turn to add ships \n\n\n====================\n\n\n";
+  std::this_thread::sleep_for(interval);
   player2.printBoard();
   std::cout << "\nPlayer 2: ";
   player2.addShips(numberShips[0] - 48);
-  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
   bool gameOver = false;
   std::string coords;
   while (!gameOver)
   {
-    std::cout << "\n====================\nPlayer 2 look away\n\n\n====================\n\n\n\n\n\n\n\n";
-
+    std::cout << "\n====================\nPlayer 2 look away\n\n\n====================\n\n\n\n\n\n\n\n\n\n";
+    std::this_thread::sleep_for(interval);
+    std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
     std::cout << "\n\nPLAYER 1'S ATTACK BOARD:\n";
     player2.printAttackBoard();
     std::cout << "\nPLAYER 1'S BOARD:\n";
@@ -171,7 +182,7 @@ void exec::pvpRegular()
     std::this_thread::sleep_for(interval);
 
 
-    std::cout << "\n====================\nPlayer 1 look away\n\n\n====================\n\n\n\n\n\n\n\n";
+    std::cout << "\n====================\nPlayer 1 look away\n\n\n====================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 
     std::cout << "\n\nPLAYER 2'S ATTACK BOARD:\n";
     player1.printAttackBoard();

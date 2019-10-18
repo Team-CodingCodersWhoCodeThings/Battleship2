@@ -16,12 +16,12 @@ easyAI::easyAI()
       gameBoard[i][j] = '#';
     }
   }
-  
+
   for(int x = 0; x < m_rows; x++)
   {
     for(int y = 0; y < m_cols; y++)
     {
-      firedSpot[x][y] = false; //marked as not hit
+      firedSpot[x][y] = false; ///marked as not hit.
     }
   }
 }
@@ -31,12 +31,12 @@ easyAI::~easyAI() {
   {
     delete gameBoard[i];
   }
-  delete gameBoard;  
+  delete gameBoard;
 }
 
 void easyAI::printBoard()
 {
-  std::cout << "  A B C D E F G H"; //COLUMN LABELS
+  std::cout << "  A B C D E F G H"; ///COLUMN LABELS.
 
   for(int x = 0; x < m_rows; x++)
   {
@@ -52,7 +52,7 @@ void easyAI::printBoard()
 
 void easyAI::printAttackBoard()
 {
-  std::cout << "  A B C D E F G H"; //COLUMN LABELS
+  std::cout << "  A B C D E F G H"; ///COLUMN LABELS.
 
   for(int x = 0; x < m_rows; x++)
   {
@@ -60,7 +60,7 @@ void easyAI::printAttackBoard()
 
     for(int y = 0; y < m_cols; y++)
     {
-      if(gameBoard[x][y] != ('#' || 'M' || 'X'))
+      if((gameBoard[x][y] == 'T') || (gameBoard[x][y] == 'D') || (gameBoard[x][y] == 'S') || (gameBoard[x][y] == 'B') || (gameBoard[x][y] == 'C'))
       {
         std::cout << "# ";
       }
@@ -82,7 +82,7 @@ void easyAI::incomingShot(std::string coords)
     std::cout << "You missed.\n";
     gameBoard[col][row] = 'M';///Mark the miss on the map.
   }
-  else if(gameBoard[col][row] == ('M' || 'X'))
+  else if(gameBoard[col][row] == 'M' || gameBoard[col][row] == 'X')
   {
     std::string newCoords = "";
     std::cout << "You already fired here. Try another position.\n";
@@ -126,7 +126,7 @@ void easyAI::incomingShot(std::string coords)
 }
 
 
-// returns an coordinate to fire on
+/// returns an coordinate to fire on.
 std::string easyAI::fireOnPlayer()
 {
   int row;
@@ -186,7 +186,7 @@ bool easyAI::gameOver()
   {
     for(int y = 0; y < m_cols; y++)
     {
-      if(gameBoard[x][y] != '#' || 'M' || 'X')
+      if((gameBoard[x][y] == 'T') || (gameBoard[x][y] == 'D') || (gameBoard[x][y] == 'S') || (gameBoard[x][y] == 'B') || (gameBoard[x][y] == 'C'))
       {
         over = false;
       }

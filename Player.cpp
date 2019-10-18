@@ -30,7 +30,7 @@ Player::~Player() {
 
 void Player::printBoard()
 {
-  std::cout << "  A B C D E F G H"; //COLUMN LABELS
+  std::cout << "  A B C D E F G H"; ///COLUMN LABELS.
 
   for(int x = 0; x < m_rows; x++)
   {
@@ -46,7 +46,7 @@ void Player::printBoard()
 
 void Player::printAttackBoard()
 {
-  std::cout << "  A B C D E F G H"; //COLUMN LABELS
+  std::cout << "  A B C D E F G H"; ///COLUMN LABELS.
 
   for(int x = 0; x < m_rows; x++)
   {
@@ -54,7 +54,7 @@ void Player::printAttackBoard()
 
     for(int y = 0; y < m_cols; y++)
     {
-      if(gameBoard[x][y] != ('#' || 'M' || 'X'))
+      if((gameBoard[x][y] == 'T') || (gameBoard[x][y] == 'D') || (gameBoard[x][y] == 'S') || (gameBoard[x][y] == 'B') || (gameBoard[x][y] == 'C'))
       {
         std::cout << "# ";
       }
@@ -83,7 +83,7 @@ void Player::incomingShot(std::string coords)
     std::cout << "You missed.\n";
     gameBoard[col][row] = 'M';///Mark the miss on the map.
   }
-  else if(gameBoard[col][row] == ('M' || 'X'))
+  else if(gameBoard[col][row] == 'M'  || gameBoard[col][row] == 'X')
   {
     if(salvoMode == false)
     {
@@ -142,7 +142,7 @@ bool Player::gameOver()///Signals the end of the game, checks for remaining ship
   {
     for(int y = 0; y < m_cols; y++)
     {
-      if(gameBoard[x][y] != '#' || 'M' || 'X')
+      if(gameBoard[x][y] == 'T' || gameBoard[x][y] == 'B' || gameBoard[x][y] == 'S' || gameBoard[x][y] == 'C' || gameBoard[x][y] == 'D')
       {
         over = false;
       }
@@ -180,7 +180,7 @@ void Player::addShips(int numShips)///Places ships based on user input.
       while(!validCoordinates(start))///repeatedly ask for start point until valid position is given.
       {
         std::cout << "Input a valid starting coordinate for ship length " << i << ", column(A-H) and row(1-8). (ex. F5)\n";
-        std::cin >> start;
+        std::getline (std::cin,start);
       }
       if(i == 1)
       {
@@ -189,7 +189,7 @@ void Player::addShips(int numShips)///Places ships based on user input.
       while(!validCoordinates(end))///repeatedly ask for end point until valid position is given.
       {
         std::cout << "Input a valid ending coordinate for ship length " << i << ", column(A-H) and row(1-8). (ex. F5)\n";
-        std::cin >> end;
+        std::getline (std::cin,end);
       }
       if(checkShipLength(i, start, end) && checkShipPosition(start, end))///Check that both ship is right length and not overlapping before placing.
       {
