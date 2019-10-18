@@ -332,7 +332,6 @@ void hardAI::addShips(int numbShips)
           }
       }
     }
-    printBoard();
   }
 }
 
