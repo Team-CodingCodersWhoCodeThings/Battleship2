@@ -1,5 +1,7 @@
 #include "easyAI.h"
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 
 easyAI::easyAI()
 {
