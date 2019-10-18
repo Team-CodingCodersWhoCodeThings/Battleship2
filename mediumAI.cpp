@@ -139,6 +139,7 @@ void mediumAI::incomingShot(std::string coords)
 
 std::string mediumAI::fireOnPlayer(Player& player)
 {
+  srand( time(NULL) );
   char** playerGameBoard = player.getGameBoard();
   int row;
   int col;
