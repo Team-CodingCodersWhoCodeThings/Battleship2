@@ -131,6 +131,7 @@ void easyAI::incomingShot(std::string coords)
 // returns an coordinate to fire on
 std::string easyAI::fireOnPlayer()
 {
+  srand( time(NULL) );
   int row;
   int col;
   do {
