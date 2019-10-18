@@ -1,5 +1,7 @@
 #include "hardAI.h"
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 
 hardAI::hardAI()
 {
@@ -30,7 +32,7 @@ hardAI::~hardAI() {
   {
     delete gameBoard[i];
   }
-  delete gameBoard;    
+  delete gameBoard;
 }
 
 void hardAI::printBoard()
@@ -150,7 +152,187 @@ std::string hardAI::fireOnPlayer()
 
 void hardAI::addShips(int numbShips)
 {
-  //needs implementation
+  srand( time(NULL) );
+  int direction;
+  int xCoord;
+  int yCoord;
+  bool exit;
+  bool place;
+  for(int i = numbShips; i>0; i--)
+  {
+    exit = false;
+    place=false;
+    while(!exit)
+    {
+      xCoord = rand() % 8;
+      yCoord = rand() % 8;
+      direction = rand() %4; //0-Up, 1-Right, 2-Down, 3-Left
+      if(gameBoard[xCoord][yCoord]=='#') //checks First Spot and going off board below
+      {
+          if(direction==0) //Up
+          {
+            if(xCoord-i>=0)
+            {
+              place=true;
+            }
+          }
+          else if(direction==1) //Right
+          {
+            if(yCoord+i<=7)
+            {
+              place=true;
+            }
+          }
+          else if(direction==2) //Down
+          {
+            if(xCoord+i<=7)
+            {
+              place=true;
+            }
+          }
+          else //Left
+          {
+            if(yCoord-i>=0)
+            {
+              place=true;
+            }
+          }
+          if(place)
+          {
+            for(int j=i;j>0;j--) //checks each position if it's water
+            {
+              if(direction==0) //up
+              {
+                if(gameBoard[xCoord-j][yCoord]!='#')
+                {
+                  place=false;
+                }
+              }
+              else if(direction==1) //right
+              {
+                if(gameBoard[xCoord][yCoord+j]!='#')
+                {
+                  place=false;
+                }
+              }
+              else if(direction==2) //down
+              {
+                if(gameBoard[xCoord+j][yCoord]!='#')
+                {
+                  place=false;
+                }
+              }
+              else //left
+              {
+                if(gameBoard[xCoord][yCoord-j]!='#')
+                {
+                  place=false;
+                }
+              }
+            }
+          }
+          if(place) //Places the Ships C,B,D,S,T
+          {
+            exit=true;
+            for(int j=0; j<i;j++)
+            {
+              if(direction==0)
+              {
+                if(i==5)//Ship length 5
+                {
+                  gameBoard[xCoord-j][yCoord]='C';
+                }
+                if(i==4)//Ship length 5
+                {
+                  gameBoard[xCoord-j][yCoord]='B';
+                }
+                if(i==3)//Ship length 5
+                {
+                  gameBoard[xCoord-j][yCoord]='D';
+                }
+                if(i==2)//Ship length 5
+                {
+                  gameBoard[xCoord-j][yCoord]='S';
+                }
+                if(i==1)//Ship length 5
+                {
+                  gameBoard[xCoord-j][yCoord]='T';
+                }
+              }
+              if(direction==1)
+              {
+                if(i==5)//Ship length 5
+                {
+                  gameBoard[xCoord][yCoord+j]='C';
+                }
+                if(i==4)//Ship length 5
+                {
+                  gameBoard[xCoord][yCoord+j]='B';
+                }
+                if(i==3)//Ship length 5
+                {
+                  gameBoard[xCoord][yCoord+j]='D';
+                }
+                if(i==2)//Ship length 5
+                {
+                  gameBoard[xCoord][yCoord+j]='S';
+                }
+                if(i==1)//Ship length 5
+                {
+                  gameBoard[xCoord][yCoord+j]='T';
+                }
+              }
+              if(direction==2)
+              {
+                if(i==5)//Ship length 5
+                {
+                  gameBoard[xCoord+j][yCoord]='C';
+                }
+                if(i==4)//Ship length 5
+                {
+                  gameBoard[xCoord+j][yCoord]='B';
+                }
+                if(i==3)//Ship length 5
+                {
+                  gameBoard[xCoord+j][yCoord]='D';
+                }
+                if(i==2)//Ship length 5
+                {
+                  gameBoard[xCoord+j][yCoord]='S';
+                }
+                if(i==1)//Ship length 5
+                {
+                  gameBoard[xCoord+j][yCoord]='T';
+                }
+              }
+              if(direction==3)
+              {
+                if(i==5)//Ship length 5
+                {
+                  gameBoard[xCoord][yCoord-j]='C';
+                }
+                if(i==4)//Ship length 5
+                {
+                  gameBoard[xCoord][yCoord-j]='B';
+                }
+                if(i==3)//Ship length 5
+                {
+                  gameBoard[xCoord][yCoord-j]='D';
+                }
+                if(i==2)//Ship length 5
+                {
+                  gameBoard[xCoord][yCoord-j]='S';
+                }
+                if(i==1)//Ship length 5
+                {
+                  gameBoard[xCoord][yCoord-j]='T';
+                }
+              }
+            }
+          }
+      }
+    }
+  }
 }
 
 bool hardAI::validCoordinates(std::string& coords)
