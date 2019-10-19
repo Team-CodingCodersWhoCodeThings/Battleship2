@@ -19,13 +19,6 @@ mediumAI::mediumAI()
     }
   }
 
-  for(int x = 0; x < m_rows; x++)
-  {
-    for(int y = 0; y < m_cols; y++)
-    {
-      firedSpot[x][y] = false; ///marked as not hit.
-    }
-  }
 
   for (int i = 0; i < 2; i++) {
     prevHitSpot[i] = -1;
@@ -36,6 +29,8 @@ mediumAI::mediumAI()
   }
 
   roundsLeftToShoot = 0;
+
+  previousShipType = ' ';
 }
 
 mediumAI::~mediumAI() {
@@ -137,22 +132,28 @@ void mediumAI::incomingShot(std::string coords)
   }
 }
 
-std::string mediumAI::fireOnPlayer(Player& player)
+std::string mediumAI::fireOnPlayer(Player*& player)
 {
   srand( time(NULL) );
-  char** playerGameBoard = player.getGameBoard();
+  char** playerGameBoard = player->getGameBoard();
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      if (j == 7) std::cout << playerGameBoard[i][j] << std::endl;
+      else std::cout << playerGameBoard[i][j];
+    }
+  }
   int row;
   int col;
   if (prevHitSpot[0] == -1 && prevHitSpot[1] == -1 && roundsLeftToShoot == 0) {
     do {
       row = rand() % 8;
       col = rand() % 8;
-    } while (firedSpot[row][col] != false);
-    firedSpot[row][col] = true;
+    } while (playerGameBoard[row][col] == 'M' || playerGameBoard[row][col] == 'X');
 
     if (playerGameBoard[row][col] == 'T') {
       prevHitSpot[0] = -1;
       prevHitSpot[1] = -1;
+      previousShipType = 'T';
       originalHitSpot[0] = -1;
       originalHitSpot[1] = -1;
       roundsLeftToShoot = 0;
@@ -161,6 +162,7 @@ std::string mediumAI::fireOnPlayer(Player& player)
     if (playerGameBoard[row][col] == 'S') {
       prevHitSpot[0] = row;
       prevHitSpot[1] = col;
+      previousShipType = 'S';
       originalHitSpot[0] = row;
       originalHitSpot[1] = col;
       roundsLeftToShoot = 1;
@@ -169,6 +171,7 @@ std::string mediumAI::fireOnPlayer(Player& player)
     if (playerGameBoard[row][col] == 'D') {
       prevHitSpot[0] = row;
       prevHitSpot[1] = col;
+      previousShipType = 'D';
       originalHitSpot[0] = row;
       originalHitSpot[1] = col;
       roundsLeftToShoot = 2;
@@ -177,6 +180,7 @@ std::string mediumAI::fireOnPlayer(Player& player)
     if (playerGameBoard[row][col] == 'B') {
       prevHitSpot[0] = row;
       prevHitSpot[1] = col;
+      previousShipType = 'B';
       originalHitSpot[0] = row;
       originalHitSpot[1] = col;
       roundsLeftToShoot = 3;
@@ -185,12 +189,12 @@ std::string mediumAI::fireOnPlayer(Player& player)
     if (playerGameBoard[row][col] == 'C') {
       prevHitSpot[0] = row;
       prevHitSpot[1] = col;
+      previousShipType = 'C';
       originalHitSpot[0] = row;
       originalHitSpot[1] = col;
       roundsLeftToShoot = 4;
     }
   } else {
-    char previousShipType = playerGameBoard[prevHitSpot[0]][prevHitSpot[1]];
     // determine direction 'up', 'down', 'left', 'right' that could find the next spot up the current ship
     if (prevHitSpot[0] - 1 >= 0 && playerGameBoard[prevHitSpot[0] - 1][prevHitSpot[1]] == previousShipType) {
       roundsLeftToShoot--;
@@ -217,11 +221,16 @@ std::string mediumAI::fireOnPlayer(Player& player)
       prevHitSpot[1] = originalHitSpot[1];
       return fireOnPlayer(player);
     }
+
+    if (roundsLeftToShoot == 0) {
+      prevHitSpot[0] = -1;
+      prevHitSpot[1] = -1;
+    }
   }
 
 
   char rowArr[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
-  return rowArr[row] + std::to_string(col+1);
+  return std::to_string(col+1) + rowArr[row];
 }
 
 void mediumAI::addShips(int numbShips)
