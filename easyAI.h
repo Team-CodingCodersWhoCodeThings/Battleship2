@@ -21,7 +21,6 @@ class easyAI
     const static int m_rows = 8;
     const static int m_cols = 8;
     char** gameBoard;
-    int m_shipCount = 0;
     bool firedSpot[m_rows][m_cols];
 };
 
