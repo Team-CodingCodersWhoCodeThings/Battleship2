@@ -140,7 +140,7 @@ std::string easyAI::fireOnPlayer()
   } while (firedSpot[row][col] != false);
   firedSpot[row][col] = true;
   char rowArr[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
-  return rowArr[row] + std::to_string(col+1);
+  return std::to_string(col+1) + rowArr[row];
 }
 
 void easyAI::addShips(int numbShips)
