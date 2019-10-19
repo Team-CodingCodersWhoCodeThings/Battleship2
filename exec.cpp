@@ -347,6 +347,7 @@ void exec::pveEasy()
       std::cin >> coords;
     }
     AIplayer->incomingShot(coords); //player 1 attacks player 2's game board
+    std::cout << "\n\n\nAI is thinking!\n";
 
     if(AIplayer->gameOver())
     {
@@ -414,6 +415,7 @@ void exec::pveMedium()
       std::cin >> coords;
     }
     AIplayer->incomingShot(coords); //player 1 attacks player 2's game board
+    std::cout << "\n\n\nAI is thinking!\n";
 
     if(AIplayer->gameOver())
     {
@@ -482,6 +484,7 @@ void exec::pveHard()
       std::cin >> coords;
     }
     AIplayer->incomingShot(coords); //player 1 attacks player 2's game board
+    std::cout << "\n\n\nAI is thinking!\n";
 
     if(AIplayer->gameOver())
     {
