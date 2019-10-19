@@ -143,11 +143,11 @@ std::string hardAI::fireOnPlayer()
         row = i;
         col = j;
         opponentGameBoard[i][j] = 'X';
-        return rowArr[row] + std::to_string(col+1);
+        return std::to_string(col+1) + rowArr[row];
       }
     }
   }
-  return rowArr[row] + std::to_string(col+1);
+  return std::to_string(col+1) + rowArr[row];
 }
 
 void hardAI::addShips(int numbShips)
@@ -402,8 +402,8 @@ bool hardAI::isShipSunk(char shipType)
 }
 
 
-void hardAI::getAndStoreOpponentBoard(Player& player) {
-  char** playerGameBoard = player.getGameBoard();
+void hardAI::getAndStoreOpponentBoard(Player*& player) {
+  char** playerGameBoard = player->getGameBoard();
   for (int i = 0; i < 8; i++) {
     for (int j = 0; j < 8; j++) {
       opponentGameBoard[i][j] = playerGameBoard[i][j];
