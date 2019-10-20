@@ -117,7 +117,7 @@ void exec::run()
     }
     else if(menuInput == "4")
     {
-      //Print leaderboard for user.
+      printHistory();
     }
     else if(menuInput == "5")
     {
@@ -549,4 +549,18 @@ void exec::saveHistory(int gameMode, int numShips)
   outFile.open("History.txt", std::ios_base::app);
   outFile<<playerName<<'\t'<<mode<<'\t'<<numShips<<'\n';
   outFile.close();
+}
+
+void exec::printHistory()
+{
+  std::cout<<'\n';
+  std::string line;
+  std::ifstream inFile;
+  inFile.open("History.txt");
+  while(getline(inFile, line))
+  {
+    std::cout<<line<<'\n';
+  }
+  inFile.close();
+  std::cout<<'\n';
 }

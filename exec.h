@@ -13,6 +13,7 @@ class exec
     void pveMedium();
     void pveHard();
     void saveHistory(int gameMode, int numShips);
+    void printHistory();
     int m_numShips = 0;
 };
 
