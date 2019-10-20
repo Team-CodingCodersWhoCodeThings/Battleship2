@@ -1,3 +1,7 @@
+///  File Name: exec.cpp.
+///  Assignment: EECS 448 Project 2.
+///  Brief: This program is the .cpp file for the exec class. It runs the game.
+
 #include "exec.h"
 #include "Player.h"
 #include "easyAI.h"
@@ -6,9 +10,12 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <fstream>
 
 void exec::run()
 {
+
+  int gameMode = 0;
   bool stillPlaying = true;
   while(stillPlaying)
   {
@@ -17,7 +24,7 @@ void exec::run()
     std::cout << "1. Play against a friend\n";
     std::cout << "2. Play against an AI opponent\n";
     std::cout << "3. Read Instructions\n";
-    std::cout << "4. View the leaderboard\n";
+    std::cout << "4. View the Game History\n";
     std::cout << "5. Quit\n";
     std::string menuInput = "";
     bool badMenuInput = true;
@@ -25,7 +32,7 @@ void exec::run()
     {
       std::cout << "Which do you choose? Option: ";
       std::cin >> menuInput;
-      if(menuInput == "1" || "2" || "3" || "4" || "5")
+      if(menuInput == "1" || menuInput =="2" || menuInput =="3" || menuInput =="4" || menuInput =="5")
       {
         badMenuInput = false;
       }
@@ -43,7 +50,7 @@ void exec::run()
       {
         std::cout << "Which do you choose? Option: ";
         std::cin >> menuInput;
-        if(menuInput == "1" || "2")
+        if(menuInput == "1" || menuInput == "2")
         {
           badMenuInput = false;
         }
@@ -55,14 +62,16 @@ void exec::run()
       if(menuInput == "1")
       {
         pvpRegular();
+        gameMode = 1;
       }
       else if(menuInput == "2")
       {
         pvpSalvo();
+        gameMode = 2;
       }
 
 
-//VIEW LEADERBOARD
+      saveHistory(gameMode, m_numShips);
 
 
 
@@ -76,7 +85,7 @@ void exec::run()
       {
         std::cout << "Which do you choose? Option: ";
         std::cin >> menuInput;
-        if(menuInput == "1" || "2" || "3")
+        if(menuInput == "1" || menuInput == "2" || menuInput == "3")
         {
           badMenuInput = false;
         }
@@ -88,31 +97,37 @@ void exec::run()
       if(menuInput == "1")
       {
         pveEasy();
+        gameMode = 3;
       }
       else if(menuInput == "2")
       {
         pveMedium();
+        gameMode = 4;
       }
       else if(menuInput == "3")
       {
         pveHard();
+        gameMode = 5;
       }
-      // std::cout << "Press Enter to return to the menu."; //user can view leaderboard until they hit enter to return to menu.
-      // std::cin >> menuInput;
-      // std::cout << "\n\n\n\n";
 
-      //LEADERBOARD
+      saveHistory(gameMode, m_numShips);
 
 
 
     }
     else if(menuInput == "3")
     {
-      //Print instructions for regular game and salvo, mention salvo is for pvp only.
+      std::cout << "\nGoals of the game!: Sink all enemy ships\n\nHow to Play:\n - You, the player, will start by selecting how many ships you'd like to play with, 1 to 5 ships.";
+      std::cout << "\n - You will walk through and place your ships and then take turns entering coordinates to attack the other players ships.\n - The game is over when all Enemy Ships have been sunk.";
+      std::cout << "\n - Salvo Mode (PvP Only): Shots are loaded and fired 5 at a time.";
+      std::cout << "\n - AI Opponent: One player plays regular Battleship against the computer.";
+      std::cout << "\n - Easy AI: AI randomly fires at opponent.";
+      std::cout << "\n - Medium AI: AI randomly fires at opponent until a ship is hit. When a ship is hit, the AI will check all surrounding positions.";
+      std::cout << "\n - Hard AI: AI will only fire at opponent's ships.";
     }
     else if(menuInput == "4")
     {
-      //Print leaderboard for user.
+      printHistory();
     }
     else if(menuInput == "5")
     {
@@ -134,7 +149,7 @@ void exec::pvpRegular()
   {
     std::cout << "How many ships do you want to play with (1 - 5)? ";
     std::cin >> numberShips;
-    if(numberShips[0] == '1' || '2' || '3' || '4' || '5')
+    if(numberShips[0] == '1' || numberShips[0] == '2' || numberShips[0] == '3' || numberShips[0] == '4' || numberShips[0] == '5')
     {
       badMenuInput = false;
     }
@@ -155,6 +170,7 @@ void exec::pvpRegular()
 
   bool gameOver = false;
   std::string coords;
+  m_numShips = player1 -> getShipCount();
   while (!gameOver)
   {
     std::cout << "\n====================\nPlayer 2 look away\n\n\n====================\n\n\n\n\n\n\n\n\n\n";
@@ -170,7 +186,8 @@ void exec::pvpRegular()
       std::cout << "Player 1, choose a coordinate to fire on. (ex. F3)\n";
       std::cin >> coords;
     }
-    player2->incomingShot(coords); //player 1 attacks player 2's game board
+    /// player 1 attacks player 2's game board.
+    player2->incomingShot(coords);
 
     if(player2->gameOver())
     {
@@ -195,7 +212,8 @@ void exec::pvpRegular()
       std::cin >> coords;
 
     }
-    player1->incomingShot(coords); //player 2 attacks player 1's game board
+    /// player 2 attacks player 1's game board.
+    player1->incomingShot(coords);
 
     if(player1->gameOver())
     {
@@ -219,7 +237,7 @@ void exec::pvpSalvo()
   {
     std::cout << "How many ships do you want to play with (1 - 5)? ";
     std::cin >> numberShips;
-    if(numberShips[0] == '1' || '2' || '3' || '4' || '5')
+    if(numberShips[0] == '1' || numberShips[0] == '2' || numberShips[0] == '3' || numberShips[0] == '4' || numberShips[0] == '5')
     {
       badMenuInput = false;
     }
@@ -260,7 +278,8 @@ void exec::pvpSalvo()
     }
     for(int i = 0; i < 5; i++)
     {
-      player2->incomingShot(coords[i]); //player 1 attacks player 2's game board
+      /// player 1 attacks player 2's game board.
+      player2->incomingShot(coords[i]);
     }
 
     if(player2->gameOver())
@@ -292,7 +311,8 @@ void exec::pvpSalvo()
     }
     for(int i = 0; i < 5; i++)
     {
-      player1->incomingShot(coords[i]); //player 1 attacks player 2's game board
+      /// player 1 attacks player 2's game board.
+      player1->incomingShot(coords[i]);
     }
 
     if(player1->gameOver())
@@ -315,7 +335,7 @@ void exec::pveEasy()
   {
     std::cout << "How many ships do you want to play with (1 - 5)? ";
     std::cin >> numberShips;
-    if(numberShips[0] == '1' || '2' || '3' || '4' || '5')
+    if(numberShips[0] == '1' || numberShips[0] == '2' || numberShips[0] == '3' || numberShips[0] == '4' || numberShips[0] == '5')
     {
       badMenuInput = false;
     }
@@ -346,7 +366,8 @@ void exec::pveEasy()
       std::cout << "Player, choose a coordinate to fire on. (ex. F3)\n";
       std::cin >> coords;
     }
-    AIplayer->incomingShot(coords); //player 1 attacks player 2's game board
+    /// player 1 attacks player 2's game board.
+    AIplayer->incomingShot(coords);
     std::cout << "\n\n\nAI is thinking!\n";
 
     if(AIplayer->gameOver())
@@ -359,7 +380,8 @@ void exec::pveEasy()
     std::this_thread::sleep_for(interval);
 
     coords = AIplayer->fireOnPlayer();
-    player->incomingShot(coords); //player 2 attacks player 1's game board
+    /// player 2 attacks player 1's game board.
+    player->incomingShot(coords);
 
     if(player->gameOver())
     {
@@ -383,7 +405,7 @@ void exec::pveMedium()
   {
     std::cout << "How many ships do you want to play with (1 - 5)? ";
     std::cin >> numberShips;
-    if(numberShips[0] == '1' || '2' || '3' || '4' || '5')
+    if(numberShips[0] == '1' || numberShips[0] == '2' || numberShips[0] == '3' || numberShips[0] == '4' || numberShips[0] == '5')
     {
       badMenuInput = false;
     }
@@ -414,7 +436,8 @@ void exec::pveMedium()
       std::cout << "Player, choose a coordinate to fire on. (ex. F3)\n";
       std::cin >> coords;
     }
-    AIplayer->incomingShot(coords); //player 1 attacks player 2's game board
+    /// player 1 attacks player 2's game board.
+    AIplayer->incomingShot(coords);
     std::cout << "\n\n\nAI is thinking!\n";
 
     if(AIplayer->gameOver())
@@ -427,7 +450,8 @@ void exec::pveMedium()
     std::this_thread::sleep_for(interval);
 
     coords = AIplayer->fireOnPlayer(player);
-    player->incomingShot(coords); //player 2 attacks player 1's game board
+    /// player 2 attacks player 1's game board.
+    player->incomingShot(coords);
 
     if(player->gameOver())
     {
@@ -451,7 +475,7 @@ void exec::pveHard()
   {
     std::cout << "How many ships do you want to play with (1 - 5)? ";
     std::cin >> numberShips;
-    if(numberShips[0] == '1' || '2' || '3' || '4' || '5')
+    if(numberShips[0] == '1' || numberShips[0] == '2' || numberShips[0] == '3' || numberShips[0] == '4' || numberShips[0] == '5')
     {
       badMenuInput = false;
     }
@@ -483,7 +507,8 @@ void exec::pveHard()
       std::cout << "Player, choose a coordinate to fire on. (ex. F3)\n";
       std::cin >> coords;
     }
-    AIplayer->incomingShot(coords); //player 1 attacks player 2's game board
+    /// player 1 attacks player 2's game board.
+    AIplayer->incomingShot(coords);
     std::cout << "\n\n\nAI is thinking!\n";
 
     if(AIplayer->gameOver())
@@ -496,8 +521,8 @@ void exec::pveHard()
     std::this_thread::sleep_for(interval);
 
     coords = AIplayer->fireOnPlayer();
-    player->incomingShot(coords); //player 2 attacks player 1's game board
-
+    /// player 2 attacks player 1's game board.
+    player->incomingShot(coords);
     if(player->gameOver())
     {
       gameOver = true;
@@ -508,4 +533,53 @@ void exec::pveHard()
   }
   delete AIplayer;
   delete player;
+}
+
+void exec::saveHistory(int gameMode, int numShips)
+{
+  std::string playerName;
+  std::cout<<"Input name of winning player: ";
+  std::cin>>playerName;
+  std::cout<<'\n';
+  std::string mode;
+
+  if(gameMode == 1)
+  {
+    mode = "PvP Regular";
+  }
+  else if(gameMode == 2)
+  {
+    mode = "PvP Salvo";
+  }
+  else if(gameMode == 3)
+  {
+    mode = "AI Easy";
+  }
+  else if (gameMode == 4)
+  {
+    mode = "AI Medium";
+  }
+  else
+  {
+    mode = "AI Hard";
+  }
+
+  std::ofstream outFile;
+  outFile.open("History.txt", std::ios_base::app);
+  outFile<<playerName<<'\t'<<mode<<'\t'<<numShips<<'\n';
+  outFile.close();
+}
+
+void exec::printHistory()
+{
+  std::cout<<'\n';
+  std::string line;
+  std::ifstream inFile;
+  inFile.open("History.txt");
+  while(getline(inFile, line))
+  {
+    std::cout<<line<<'\n';
+  }
+  inFile.close();
+  std::cout<<'\n';
 }

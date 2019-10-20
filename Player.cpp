@@ -1,3 +1,7 @@
+/// File Name player.cpp.
+/// Assignment EECS 448 Project 2.
+/// Brief Implements player functions.
+
 #include "Player.h"
 #include<iostream>
 #include<string>
@@ -30,7 +34,8 @@ Player::~Player() {
 
 void Player::printBoard()
 {
-  std::cout << "  A B C D E F G H"; ///COLUMN LABELS.
+  /// COLUMN LABELS.
+  std::cout << "  A B C D E F G H";
 
   for(int x = 0; x < m_rows; x++)
   {
@@ -46,7 +51,8 @@ void Player::printBoard()
 
 void Player::printAttackBoard()
 {
-  std::cout << "  A B C D E F G H"; ///COLUMN LABELS.
+  /// COLUMN LABELS.
+  std::cout << "  A B C D E F G H";
 
   for(int x = 0; x < m_rows; x++)
   {
@@ -67,7 +73,8 @@ void Player::printAttackBoard()
   std::cout << "\n";
 }
 
-char Player::find(std::string coord)///Will return the value of the board at the specified location, mostly for AI use.
+/// Will return the value of the board at the specified location, mostly for AI use.
+char Player::find(std::string coord)
 {
   int row = convertCoordinate(coord[0]);
   int col = convertCoordinate(coord[1]);
@@ -76,12 +83,15 @@ char Player::find(std::string coord)///Will return the value of the board at the
 
 void Player::incomingShot(std::string coords)
 {
-  int row = convertCoordinate(coords[0]);///Convert Coordinates to array indeces.
+  /// Convert Coordinates to array indeces.
+  int row = convertCoordinate(coords[0]);
   int col = convertCoordinate(coords[1]);
-  if(gameBoard[col][row] == '#')///Check if hits empty water, a miss.
+  /// Check if hits empty water, a miss.
+  if(gameBoard[col][row] == '#')
   {
     std::cout << "You missed.\n";
-    gameBoard[col][row] = 'M';///Mark the miss on the map.
+    /// Mark the miss on the map.
+    gameBoard[col][row] = 'M';
   }
   else if(gameBoard[col][row] == 'M'  || gameBoard[col][row] == 'X')
   {
@@ -134,10 +144,11 @@ void Player::incomingShot(std::string coords)
 }
 
 
-
-bool Player::gameOver()///Signals the end of the game, checks for remaining ship markers.
+/// Signals the end of the game, checks for remaining ship markers.
+bool Player::gameOver()
 {
-  bool over = true;///Iterates through map, simply setting over to false if it sees a ship marker.
+  /// Iterates through map, simply setting over to false if it sees a ship marker.
+  bool over = true;
   for(int x = 0; x < m_rows; x++)
   {
     for(int y = 0; y < m_cols; y++)
@@ -153,7 +164,8 @@ bool Player::gameOver()///Signals the end of the game, checks for remaining ship
 
 bool Player::isShipSunk(char shipType)
 {
-  bool isSunk = true;///Iterates through map, simply setting isSunk to false if it sees the specified ship marker.
+  /// Iterates through map, simply setting isSunk to false if it sees the specified ship marker.
+  bool isSunk = true;
   for(int x = 0; x < m_rows; x++)
   {
     for(int y = 0; y < m_cols; y++)
@@ -167,17 +179,20 @@ bool Player::isShipSunk(char shipType)
   return isSunk;
 }
 
-void Player::addShips(int numShips)///Places ships based on user input.
+/// Places ships based on user input.
+void Player::addShips(int numShips)
 {
   m_shipCount = numShips;
   bool placing = true;
   std::string start = "";
   std::string end = "";
-  for(int i = m_shipCount; i > 0; i--)///Places ships going largest to smallest.
+  /// Places ships going largest to smallest.
+  for(int i = m_shipCount; i > 0; i--)
   {
     while(placing)
     {
-      while(!validCoordinates(start))///repeatedly ask for start point until valid position is given.
+      /// repeatedly ask for start point until valid position is given.
+      while(!validCoordinates(start))
       {
         std::cout << "Input a valid starting coordinate for ship length " << i << ", column(A-H) and row(1-8). (ex. F5)\n";
         std::getline (std::cin,start);
@@ -186,12 +201,14 @@ void Player::addShips(int numShips)///Places ships based on user input.
       {
         end = start;
       }
-      while(!validCoordinates(end))///repeatedly ask for end point until valid position is given.
+      /// repeatedly ask for end point until valid position is given.
+      while(!validCoordinates(end))
       {
         std::cout << "Input a valid ending coordinate for ship length " << i << ", column(A-H) and row(1-8). (ex. F5)\n";
         std::getline (std::cin,end);
       }
-      if(checkShipLength(i, start, end) && checkShipPosition(start, end))///Check that both ship is right length and not overlapping before placing.
+      /// Check that both ship is right length and not overlapping before placing.
+      if(checkShipLength(i, start, end) && checkShipPosition(start, end))
       {
         placeShip(i, start, end);
         placing = false;
@@ -199,7 +216,8 @@ void Player::addShips(int numShips)///Places ships based on user input.
         start = "";
         end = "";
       }
-      else///If ship doesn't fit those two conditions, restart process.
+      /// If ship doesn't fit those two conditions, restart process.
+      else
       {
         start = "";
         end = "";
@@ -217,22 +235,27 @@ void Player::addShips(int numShips)///Places ships based on user input.
         }
       }
     }
-    placing = true;///Resets looping variable if another ship is to be placed.
+    /// Resets looping variable if another ship is to be placed.
+    placing = true;
   }
 }
 
-bool Player::validCoordinates(std::string& coords)///Returns if coordinate is on map, and uppercases first coordinate if necessary.
+/// Returns if coordinate is on map, and uppercases first coordinate if necessary.
+bool Player::validCoordinates(std::string& coords)
 {
-  if(coords.length() != 2)///Checks coordinate set is exactly a column and row with length.
+  /// Checks coordinate set is exactly a column and row with length.
+  if(coords.length() != 2)
   {
     return false;
   }
-  if(coords[0] == 'a' || coords[0] == 'b' || coords[0] == 'c' || coords[0] == 'd' || coords[0] == 'e' || coords[0] == 'f' || coords[0] == 'g' || coords[0] == 'h')///Uppercases first coordinate if necessary.
+  /// Uppercases first coordinate if necessary.
+  if(coords[0] == 'a' || coords[0] == 'b' || coords[0] == 'c' || coords[0] == 'd' || coords[0] == 'e' || coords[0] == 'f' || coords[0] == 'g' || coords[0] == 'h')
   {
     coords[0] = toupper(coords[0]);
   }
+  /// Checks first is A-H, second is 1-8.
   if((coords[0] == 'A' || coords[0] == 'B' || coords[0] == 'C' || coords[0] == 'D' || coords[0] == 'E' || coords[0] == 'F' || coords[0] == 'G' || coords[0] == 'H') &&
-  (coords[1] == '1' || coords[1] == '2' || coords[1] == '3' || coords[1] == '4' || coords[1] == '5' || coords[1] == '6' || coords[1] == '7' || coords[1] == '8'))///Checks first is A-H, second is 1-8.
+  (coords[1] == '1' || coords[1] == '2' || coords[1] == '3' || coords[1] == '4' || coords[1] == '5' || coords[1] == '6' || coords[1] == '7' || coords[1] == '8'))
   {
     return true;
   }
@@ -242,8 +265,8 @@ bool Player::validCoordinates(std::string& coords)///Returns if coordinate is on
   }
 }
 
-
-int Player::convertCoordinate(char coord)///Converts coordinates in char to int array coordinates using ASCII value.
+/// Converts coordinates in char to int array coordinates using ASCII value.
+int Player::convertCoordinate(char coord)
 {
   if(coord == 'A' || coord == 'B' || coord == 'C' || coord == 'D' || coord == 'E' || coord == 'F' || coord == 'G' || coord == 'H')
   {
@@ -256,13 +279,15 @@ int Player::convertCoordinate(char coord)///Converts coordinates in char to int 
   return 0;
 }
 
-bool Player::checkShipLength(int length, std::string start, std::string end)///Function checking that start and endpoints are in a straight line and right distance apart.
+/// Function checking that start and endpoints are in a straight line and right distance apart.
+bool Player::checkShipLength(int length, std::string start, std::string end)
 {
-  if((start[0] != end[0]) && (start[1] != end[1]))///Checks first if not diagonal.
+  if((start[0] != end[0]) && (start[1] != end[1]))/// Checks first if not diagonal.
   {
     return false;
   }
-  else if(start[0] == end[0])///If columns are same, checks distance of row coordinates.
+  /// If columns are same, checks distance of row coordinates.
+  else if(start[0] == end[0])
   {
     if((end[1]-start[1]==(length-1))||(start[1]-end[1]==(length-1)))
     {
@@ -273,7 +298,8 @@ bool Player::checkShipLength(int length, std::string start, std::string end)///F
       return false;
     }
   }
-  else if(start[1] == end[1])///If rows are same, checks distance of column coordinates.
+  /// If rows are same, checks distance of column coordinates.
+  else if(start[1] == end[1])
   {
     if((end[0]-start[0]==(length-1))||(start[0]-end[0]==(length-1)))
     {
@@ -287,14 +313,16 @@ bool Player::checkShipLength(int length, std::string start, std::string end)///F
   return false;
 }
 
-bool Player::checkShipPosition(std::string start, std::string end)///Checks that there are no ships in a specified line.
+/// Checks that there are no ships in a specified line.
+bool Player::checkShipPosition(std::string start, std::string end)
 {
   int startRow = convertCoordinate(start[0]);
   int startCol = convertCoordinate(start[1]);
   int endRow = convertCoordinate(end[0]);
   int endCol = convertCoordinate(end[1]);
   bool canPlace = true;
-  if(startCol == endCol)///If the column coordinates are the same, iterate over row and change canPlace to false if it sees a ship marker.
+  /// If the column coordinates are the same, iterate over row and change canPlace to false if it sees a ship marker.
+  if(startCol == endCol)
   {
     if(startRow > endRow)
     {
@@ -350,15 +378,18 @@ bool Player::checkShipPosition(std::string start, std::string end)///Checks that
   return canPlace;
 }
 
-void Player::placeShip(int length, std::string start, std::string end)///Actually places the ship on the board.
+/// Actually places the ship on the board.
+void Player::placeShip(int length, std::string start, std::string end)
 {
   int startRow = convertCoordinate(start[0]);
   int startCol = convertCoordinate(start[1]);
   int endRow = convertCoordinate(end[0]);
   int endCol = convertCoordinate(end[1]);
   char ships[5] = {'T','S','D','B','C'};
-  char curShip = ships[length - 1];///Uses ship marker for ship of that length.
-  if(startCol == endCol)///If the column coordinates are the same, iterate over row and place ship markers.
+  /// Uses ship marker for ship of that length.
+  char curShip = ships[length - 1];
+  /// If the column coordinates are the same, iterate over row and place ship markers.
+  if(startCol == endCol)
   {
     if(startRow > endRow)
     {
@@ -400,4 +431,9 @@ void Player::placeShip(int length, std::string start, std::string end)///Actuall
 
 char** Player::getGameBoard() {
   return gameBoard;
+}
+
+int Player::getShipCount()
+{
+  return (m_shipCount);
 }
