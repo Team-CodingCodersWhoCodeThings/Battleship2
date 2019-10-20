@@ -1,9 +1,23 @@
 Works Cited
 
+cplusplus. “Std::Fstream.” Cplusplus.com, 2011, www.cplusplus.com/reference/fstream/fstream/. Library used to save game history. (fstream)
+
 cplusplus. Cplusplus.com, 2011, www.cplusplus.com/reference/iostream/. Library used for printing to the terminal and getting user input. (iostream)
+
+cplusplus. “ (Stdlib.h).” Cplusplus.com, 2011, www.cplusplus.com/reference/cstdlib/. Library used for randomizing ship placement. (stdlib.h)
+
+cplusplus. “Std::String.” Cplusplus.com, 2011, www.cplusplus.com/reference/string/string/. Library used for strings. (string)
+
+cplusplus. “ (Time.h).” Cplusplus.com, 2011, www.cplusplus.com/reference/ctime/. Library used for randomizing ship placement. (time.h)
 
 cppreference. “Date and Time Utilities.” Cppreference.com, 7 Oct. 2017, en.cppreference.com/w/cpp/chrono. Used when pausing program in between turns. (chrono)
 
 cppreference. “Std::Thread.” Cppreference.com, 15 June 2018, en.cppreference.com/w/cpp/thread/thread. Used for pausing program in between turns. (thread)
 
-ADD TWO OTHER CITATIONS
+
+
+
+
+
+
+
