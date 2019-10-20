@@ -109,7 +109,7 @@ class hardAI
      \return none.
     */
 
-    void getAndStoreOpponentBoard(Player*& player); // get player's board and store it locally
+    void getAndStoreOpponentBoard(Player*& player);
   private:
     /// Number of rows.
     const static int m_rows = 8;
