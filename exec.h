@@ -12,6 +12,7 @@ class exec
     void pveEasy();
     void pveMedium();
     void pveHard();
+    void saveHistory(gameMode, numShips);
 };
 
 #endif

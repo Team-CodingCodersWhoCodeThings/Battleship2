@@ -6,9 +6,13 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <fstream>
 
 void exec::run()
 {
+
+  int gameMode = 0;
+  int numShips = 0;
   bool stillPlaying = true;
   while(stillPlaying)
   {
@@ -55,14 +59,16 @@ void exec::run()
       if(menuInput == "1")
       {
         pvpRegular();
+        gameMode = 1;
       }
       else if(menuInput == "2")
       {
         pvpSalvo();
+        gameMode = 2;
       }
 
 
-//VIEW LEADERBOARD
+      //VIEW LEADERBOARD
 
 
 
@@ -88,18 +94,18 @@ void exec::run()
       if(menuInput == "1")
       {
         pveEasy();
+        gameMode = 3;
       }
       else if(menuInput == "2")
       {
         pveMedium();
+        gameMode = 4;
       }
       else if(menuInput == "3")
       {
         pveHard();
+        gameMode = 5;
       }
-      // std::cout << "Press Enter to return to the menu."; //user can view leaderboard until they hit enter to return to menu.
-      // std::cin >> menuInput;
-      // std::cout << "\n\n\n\n";
 
       //LEADERBOARD
 
