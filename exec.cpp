@@ -12,7 +12,6 @@ void exec::run()
 {
 
   int gameMode = 0;
-  int numShips = 0;
   bool stillPlaying = true;
   while(stillPlaying)
   {
@@ -68,7 +67,7 @@ void exec::run()
       }
 
 
-      //VIEW LEADERBOARD
+      saveHistory(gameMode, m_numShips);
 
 
 
@@ -107,7 +106,7 @@ void exec::run()
         gameMode = 5;
       }
 
-      //LEADERBOARD
+      saveHistory(gameMode, m_numShips);
 
 
 
@@ -161,6 +160,7 @@ void exec::pvpRegular()
 
   bool gameOver = false;
   std::string coords;
+  m_numShips = player1 -> getShipCount();
   while (!gameOver)
   {
     std::cout << "\n====================\nPlayer 2 look away\n\n\n====================\n\n\n\n\n\n\n\n\n\n";
@@ -514,4 +514,10 @@ void exec::pveHard()
   }
   delete AIplayer;
   delete player;
+}
+
+void exec::saveHistory(int gameMode, int numShips)
+{
+  std::cout<<gameMode<<'\n';
+  std::cout<<numShips<<'\n';
 }
