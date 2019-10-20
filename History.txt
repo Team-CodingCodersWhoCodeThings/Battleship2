@@ -1,0 +1,4 @@
+Player	Mode	Ship_Count
+
+player1	PvP Regular	1
+AI	AI Hard	1
