@@ -55,7 +55,7 @@ class hardAI
     /*!
      \pre Board created, boats placed, coordinates given.
      \post Gives coordinate for AI to fire on.
-     \return none.
+     \return coord to fire on.
     */
 
     std::string fireOnPlayer();
