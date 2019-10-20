@@ -1,0 +1,319 @@
+\hypertarget{class_player}{}\doxysection{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+File Name \mbox{\hyperlink{_player_8h_source}{Player.\+h}}.  
+
+
+
+
+{\ttfamily \#include $<$Player.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_a98308fface0bb1b6a0c9ba1b54cbef4b}{Player}} (bool salvo)
+\begin{DoxyCompactList}\small\item\em File Name player.\+cpp. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_player_a749d2c00e1fe0f5c2746f7505a58c062}{$\sim$\+Player}} ()
+\item 
+void \mbox{\hyperlink{class_player_ad3b1cc498f9f545aa9beb16bb91d45f1}{print\+Board}} ()
+\item 
+void \mbox{\hyperlink{class_player_a3194c6311f036fbcf263342eaca22541}{print\+Attack\+Board}} ()
+\item 
+void \mbox{\hyperlink{class_player_aa70a53bac82e4df909744175ad82d84b}{incoming\+Shot}} (std\+::string coords)
+\item 
+char \mbox{\hyperlink{class_player_a7400e60793113837f34359fc628b4f0d}{find}} (std\+::string coord)
+\begin{DoxyCompactList}\small\item\em Will return the value of the board at the specified location, mostly for AI use. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a49e3cf2dfa2d37b11e60cd353a8e1815}{add\+Ships}} (int numb\+Ships)
+\begin{DoxyCompactList}\small\item\em Places ships based on user input. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_aa3df5e55123a5fb635bb4202fbab590b}{valid\+Coordinates}} (std\+::string \&coords)
+\begin{DoxyCompactList}\small\item\em Returns if coordinate is on map, and uppercases first coordinate if necessary. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_player_acfc6a1355068b9e817353efdbf688927}{convert\+Coordinate}} (char coord)
+\begin{DoxyCompactList}\small\item\em Converts coordinates in char to int array coordinates using A\+S\+C\+II value. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_a98dff5ba148838f3db6d9934048c33d9}{game\+Over}} ()
+\begin{DoxyCompactList}\small\item\em Signals the end of the game, checks for remaining ship markers. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_player_a41a7f4c02564f4df7b376b0a285c0290}{is\+Ship\+Sunk}} (char ship\+Type)
+\item 
+char $\ast$$\ast$ \mbox{\hyperlink{class_player_abadca1e5618636c6a9999d441be99eb1}{get\+Game\+Board}} ()
+\item 
+int \mbox{\hyperlink{class_player_acc970c8f6561b8a095ab299b9cea8d09}{get\+Ship\+Count}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File Name \mbox{\hyperlink{_player_8h_source}{Player.\+h}}. 
+
+Assignment E\+E\+CS 448 Project 2. Brief Defines \mbox{\hyperlink{class_player}{Player}} functions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_player_a98308fface0bb1b6a0c9ba1b54cbef4b}\label{class_player_a98308fface0bb1b6a0c9ba1b54cbef4b}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{bool}]{salvo }\end{DoxyParamCaption})}
+
+
+
+File Name player.\+cpp. 
+
+\begin{DoxyPrecond}{Precondition}
+salvo mode selected. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+creates board for player. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none.
+\end{DoxyReturn}
+Assignment E\+E\+CS 448 Project 2. Brief Implements player functions. Creating the 2D array.\mbox{\Hypertarget{class_player_a749d2c00e1fe0f5c2746f7505a58c062}\label{class_player_a749d2c00e1fe0f5c2746f7505a58c062}} 
+\index{Player@{Player}!````~Player@{$\sim$Player}}
+\index{````~Player@{$\sim$Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{$\sim$Player()}{~Player()}}
+{\footnotesize\ttfamily Player\+::$\sim$\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board object is created. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+board object is deleted. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_a49e3cf2dfa2d37b11e60cd353a8e1815}\label{class_player_a49e3cf2dfa2d37b11e60cd353a8e1815}} 
+\index{Player@{Player}!addShips@{addShips}}
+\index{addShips@{addShips}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{addShips()}{addShips()}}
+{\footnotesize\ttfamily void Player\+::add\+Ships (\begin{DoxyParamCaption}\item[{int}]{numb\+Ships }\end{DoxyParamCaption})}
+
+
+
+Places ships based on user input. 
+
+\begin{DoxyPrecond}{Precondition}
+Board created and coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Boat is placed onto the Board. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em numb\+Ships} & how many ships to place \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+Places ships going largest to smallest.
+
+repeatedly ask for start point until valid position is given.
+
+repeatedly ask for end point until valid position is given.
+
+Check that both ship is right length and not overlapping before placing.
+
+If ship doesn\textquotesingle{}t fit those two conditions, restart process.
+
+Resets looping variable if another ship is to be placed.\mbox{\Hypertarget{class_player_acfc6a1355068b9e817353efdbf688927}\label{class_player_acfc6a1355068b9e817353efdbf688927}} 
+\index{Player@{Player}!convertCoordinate@{convertCoordinate}}
+\index{convertCoordinate@{convertCoordinate}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{convertCoordinate()}{convertCoordinate()}}
+{\footnotesize\ttfamily int Player\+::convert\+Coordinate (\begin{DoxyParamCaption}\item[{char}]{coord }\end{DoxyParamCaption})}
+
+
+
+Converts coordinates in char to int array coordinates using A\+S\+C\+II value. 
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+coordinate converted to int from char. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+converted coord. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_player_a7400e60793113837f34359fc628b4f0d}\label{class_player_a7400e60793113837f34359fc628b4f0d}} 
+\index{Player@{Player}!find@{find}}
+\index{find@{find}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily char Player\+::find (\begin{DoxyParamCaption}\item[{std\+::string}]{coord }\end{DoxyParamCaption})}
+
+
+
+Will return the value of the board at the specified location, mostly for AI use. 
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+converts coordinates to ints. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to be converted for AI use. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+coordinate for AI. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_player_a98dff5ba148838f3db6d9934048c33d9}\label{class_player_a98dff5ba148838f3db6d9934048c33d9}} 
+\index{Player@{Player}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{gameOver()}{gameOver()}}
+{\footnotesize\ttfamily bool Player\+::game\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Signals the end of the game, checks for remaining ship markers. 
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Checks if there are any boats left on a Board, ends game. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+True if there are no boats, else false. 
+\end{DoxyReturn}
+Iterates through map, simply setting over to false if it sees a ship marker.\mbox{\Hypertarget{class_player_abadca1e5618636c6a9999d441be99eb1}\label{class_player_abadca1e5618636c6a9999d441be99eb1}} 
+\index{Player@{Player}!getGameBoard@{getGameBoard}}
+\index{getGameBoard@{getGameBoard}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getGameBoard()}{getGameBoard()}}
+{\footnotesize\ttfamily char $\ast$$\ast$ Player\+::get\+Game\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+gets game board. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+the board. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_player_acc970c8f6561b8a095ab299b9cea8d09}\label{class_player_acc970c8f6561b8a095ab299b9cea8d09}} 
+\index{Player@{Player}!getShipCount@{getShipCount}}
+\index{getShipCount@{getShipCount}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getShipCount()}{getShipCount()}}
+{\footnotesize\ttfamily int Player\+::get\+Ship\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+gets ship count. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+how many ships used. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_player_aa70a53bac82e4df909744175ad82d84b}\label{class_player_aa70a53bac82e4df909744175ad82d84b}} 
+\index{Player@{Player}!incomingShot@{incomingShot}}
+\index{incomingShot@{incomingShot}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{incomingShot()}{incomingShot()}}
+{\footnotesize\ttfamily void Player\+::incoming\+Shot (\begin{DoxyParamCaption}\item[{std\+::string}]{coords }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Updates Board to show current game status, prints message if hit, sunk, or missed. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to be fired. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+Convert Coordinates to array indeces.
+
+Check if hits empty water, a miss.
+
+Mark the miss on the map.\mbox{\Hypertarget{class_player_a41a7f4c02564f4df7b376b0a285c0290}\label{class_player_a41a7f4c02564f4df7b376b0a285c0290}} 
+\index{Player@{Player}!isShipSunk@{isShipSunk}}
+\index{isShipSunk@{isShipSunk}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{isShipSunk()}{isShipSunk()}}
+{\footnotesize\ttfamily bool Player\+::is\+Ship\+Sunk (\begin{DoxyParamCaption}\item[{char}]{ship\+Type }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Iterates through Board, simply setting is\+Sunk to false if it sees the specified ship marker. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+True if ship is sunk, otherwise false. 
+\end{DoxyReturn}
+Iterates through map, simply setting is\+Sunk to false if it sees the specified ship marker.\mbox{\Hypertarget{class_player_a3194c6311f036fbcf263342eaca22541}\label{class_player_a3194c6311f036fbcf263342eaca22541}} 
+\index{Player@{Player}!printAttackBoard@{printAttackBoard}}
+\index{printAttackBoard@{printAttackBoard}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{printAttackBoard()}{printAttackBoard()}}
+{\footnotesize\ttfamily void Player\+::print\+Attack\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Prints opposite player\textquotesingle{}s board. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+C\+O\+L\+U\+MN L\+A\+B\+E\+LS.\mbox{\Hypertarget{class_player_ad3b1cc498f9f545aa9beb16bb91d45f1}\label{class_player_ad3b1cc498f9f545aa9beb16bb91d45f1}} 
+\index{Player@{Player}!printBoard@{printBoard}}
+\index{printBoard@{printBoard}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{printBoard()}{printBoard()}}
+{\footnotesize\ttfamily void Player\+::print\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Prints board. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+C\+O\+L\+U\+MN L\+A\+B\+E\+LS.\mbox{\Hypertarget{class_player_aa3df5e55123a5fb635bb4202fbab590b}\label{class_player_aa3df5e55123a5fb635bb4202fbab590b}} 
+\index{Player@{Player}!validCoordinates@{validCoordinates}}
+\index{validCoordinates@{validCoordinates}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{validCoordinates()}{validCoordinates()}}
+{\footnotesize\ttfamily bool Player\+::valid\+Coordinates (\begin{DoxyParamCaption}\item[{std\+::string \&}]{coords }\end{DoxyParamCaption})}
+
+
+
+Returns if coordinate is on map, and uppercases first coordinate if necessary. 
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Returns if valid position. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return true if coordinate valid, else false. 
+\end{DoxyReturn}
+Checks coordinate set is exactly a column and row with length.
+
+Uppercases first coordinate if necessary.
+
+Checks first is A-\/H, second is 1-\/8.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Player.\+h\item 
+Player.\+cpp\end{DoxyCompactItemize}
