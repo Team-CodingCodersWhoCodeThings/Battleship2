@@ -1,0 +1,9 @@
+Works Cited
+
+cplusplus. Cplusplus.com, 2011, www.cplusplus.com/reference/iostream/. Library used for printing to the terminal and getting user input. (iostream)
+
+cppreference. “Date and Time Utilities.” Cppreference.com, 7 Oct. 2017, en.cppreference.com/w/cpp/chrono. Used when pausing program in between turns. (chrono)
+
+cppreference. “Std::Thread.” Cppreference.com, 15 June 2018, en.cppreference.com/w/cpp/thread/thread. Used for pausing program in between turns. (thread)
+
+ADD TWO OTHER CITATIONS
