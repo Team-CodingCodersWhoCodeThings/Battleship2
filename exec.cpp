@@ -257,6 +257,7 @@ void exec::pvpSalvo()
 
   bool gameOver = false;
   std::string coords[5];
+  m_numShips = player1 -> getShipCount();
   while (!gameOver)
   {
     std::cout << "\n====================\nPlayer 2 look away\n\n\n====================\n\n\n\n\n\n\n\n";
@@ -352,6 +353,7 @@ void exec::pveEasy()
 
   bool gameOver = false;
   std::string coords;
+  m_numShips = player -> getShipCount();
   while (!gameOver)
   {
     std::cout << "\n\n\n";
@@ -422,6 +424,7 @@ void exec::pveMedium()
 
   bool gameOver = false;
   std::string coords;
+  m_numShips = player -> getShipCount();
   while (!gameOver)
   {
     std::cout << "\n\n\n";
@@ -493,6 +496,7 @@ void exec::pveHard()
 
   bool gameOver = false;
   std::string coords;
+  m_numShips = player -> getShipCount();
   while (!gameOver)
   {
     std::cout << "\n\n\n";
