@@ -80,6 +80,8 @@ public:
 
   char** getGameBoard();
 
+  int getShipCount();
+
 private:
   const static int m_rows = 8;
   const static int m_cols = 8;

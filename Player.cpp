@@ -401,3 +401,8 @@ void Player::placeShip(int length, std::string start, std::string end)///Actuall
 char** Player::getGameBoard() {
   return gameBoard;
 }
+
+int Player::getShipCount()
+{
+  return (m_shipCount);
+}
