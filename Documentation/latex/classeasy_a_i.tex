@@ -1,0 +1,276 @@
+\hypertarget{classeasy_a_i}{}\doxysection{easy\+AI Class Reference}
+\label{classeasy_a_i}\index{easyAI@{easyAI}}
+
+
+File Name \mbox{\hyperlink{easy_a_i_8h_source}{easy\+A\+I.\+h}}.  
+
+
+
+
+{\ttfamily \#include $<$easy\+A\+I.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classeasy_a_i_ade7e9c427605b02324be710634759247}{easy\+AI}} ()
+\begin{DoxyCompactList}\small\item\em File Name easy\+A\+I.\+cpp. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classeasy_a_i_aee3bc37fdd1922cb0ca8f189f40dc084}{$\sim$easy\+AI}} ()
+\item 
+void \mbox{\hyperlink{classeasy_a_i_a963ba96d1fd86f685f6b2ca970de6b8b}{print\+Board}} ()
+\item 
+void \mbox{\hyperlink{classeasy_a_i_a7f64bb53285d4717d10249786c1d658b}{print\+Attack\+Board}} ()
+\item 
+void \mbox{\hyperlink{classeasy_a_i_acdbfa70de5221ec9f56c88e16d5b95f2}{incoming\+Shot}} (std\+::string coords)
+\item 
+std\+::string \mbox{\hyperlink{classeasy_a_i_a8e5dd1083e1f84807c9a4c05bfdcb404}{fire\+On\+Player}} ()
+\begin{DoxyCompactList}\small\item\em returns an coordinate to fire on. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classeasy_a_i_a09955bc99652dbe1fa656891816d5d6e}{add\+Ships}} (int numb\+Ships)
+\item 
+bool \mbox{\hyperlink{classeasy_a_i_abedfc5668743e032bd6d90887945c8de}{valid\+Coordinates}} (std\+::string \&coords)
+\item 
+int \mbox{\hyperlink{classeasy_a_i_af23d5c4ffe3728d8165741b974a2ce7a}{convert\+Coordinate}} (char coord)
+\item 
+bool \mbox{\hyperlink{classeasy_a_i_aeb5cd91f38068ad31df749d9be418ef4}{game\+Over}} ()
+\item 
+bool \mbox{\hyperlink{classeasy_a_i_abfa5245a5d11d7c1465718f7c1a8ceda}{is\+Ship\+Sunk}} (char ship\+Type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File Name \mbox{\hyperlink{easy_a_i_8h_source}{easy\+A\+I.\+h}}. 
+
+Assignment E\+E\+CS 448 Project 2. Brief Defines easy AI functions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classeasy_a_i_ade7e9c427605b02324be710634759247}\label{classeasy_a_i_ade7e9c427605b02324be710634759247}} 
+\index{easyAI@{easyAI}!easyAI@{easyAI}}
+\index{easyAI@{easyAI}!easyAI@{easyAI}}
+\doxysubsubsection{\texorpdfstring{easyAI()}{easyAI()}}
+{\footnotesize\ttfamily easy\+A\+I\+::easy\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+File Name easy\+A\+I.\+cpp. 
+
+\begin{DoxyPrecond}{Precondition}
+easy AI mode selected. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+creates board for easy AI. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none.
+\end{DoxyReturn}
+Assignment E\+E\+CS 448 Project 2. Brief Implements easy AI functions. Creating the 2D array.
+
+marked as not hit.\mbox{\Hypertarget{classeasy_a_i_aee3bc37fdd1922cb0ca8f189f40dc084}\label{classeasy_a_i_aee3bc37fdd1922cb0ca8f189f40dc084}} 
+\index{easyAI@{easyAI}!````~easyAI@{$\sim$easyAI}}
+\index{````~easyAI@{$\sim$easyAI}!easyAI@{easyAI}}
+\doxysubsubsection{\texorpdfstring{$\sim$easyAI()}{~easyAI()}}
+{\footnotesize\ttfamily easy\+A\+I\+::$\sim$easy\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\mbox{\hyperlink{classeasy_a_i}{easy\+AI}} object is created. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\mbox{\hyperlink{classeasy_a_i}{easy\+AI}} object is deleted. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classeasy_a_i_a09955bc99652dbe1fa656891816d5d6e}\label{classeasy_a_i_a09955bc99652dbe1fa656891816d5d6e}} 
+\index{easyAI@{easyAI}!addShips@{addShips}}
+\index{addShips@{addShips}!easyAI@{easyAI}}
+\doxysubsubsection{\texorpdfstring{addShips()}{addShips()}}
+{\footnotesize\ttfamily void easy\+A\+I\+::add\+Ships (\begin{DoxyParamCaption}\item[{int}]{numb\+Ships }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created and coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Boat is placed onto the Board. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em numb\+Ships} & how many ships to place \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+0-\/Up, 1-\/Right, 2-\/Down, 3-\/Left.
+
+checks First Spot and going off board below.
+
+Up.
+
+Right.
+
+Down.
+
+Left.
+
+checks each position if it\textquotesingle{}s water.
+
+right.
+
+down.
+
+left.
+
+Places the Ships C,B,D,S,T.\mbox{\Hypertarget{classeasy_a_i_af23d5c4ffe3728d8165741b974a2ce7a}\label{classeasy_a_i_af23d5c4ffe3728d8165741b974a2ce7a}} 
+\index{easyAI@{easyAI}!convertCoordinate@{convertCoordinate}}
+\index{convertCoordinate@{convertCoordinate}!easyAI@{easyAI}}
+\doxysubsubsection{\texorpdfstring{convertCoordinate()}{convertCoordinate()}}
+{\footnotesize\ttfamily int easy\+A\+I\+::convert\+Coordinate (\begin{DoxyParamCaption}\item[{char}]{coord }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+coordinate converted to int from char. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+converted coord. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classeasy_a_i_a8e5dd1083e1f84807c9a4c05bfdcb404}\label{classeasy_a_i_a8e5dd1083e1f84807c9a4c05bfdcb404}} 
+\index{easyAI@{easyAI}!fireOnPlayer@{fireOnPlayer}}
+\index{fireOnPlayer@{fireOnPlayer}!easyAI@{easyAI}}
+\doxysubsubsection{\texorpdfstring{fireOnPlayer()}{fireOnPlayer()}}
+{\footnotesize\ttfamily std\+::string easy\+A\+I\+::fire\+On\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns an coordinate to fire on. 
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Gives coordinate for AI to fire on. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+coord to fire on. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classeasy_a_i_aeb5cd91f38068ad31df749d9be418ef4}\label{classeasy_a_i_aeb5cd91f38068ad31df749d9be418ef4}} 
+\index{easyAI@{easyAI}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!easyAI@{easyAI}}
+\doxysubsubsection{\texorpdfstring{gameOver()}{gameOver()}}
+{\footnotesize\ttfamily bool easy\+A\+I\+::game\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Checks if there are any boats left on a Board, ends game. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+True if there are no boats, else false. 
+\end{DoxyReturn}
+Iterates through map, simply setting over to false if it sees a ship marker.\mbox{\Hypertarget{classeasy_a_i_acdbfa70de5221ec9f56c88e16d5b95f2}\label{classeasy_a_i_acdbfa70de5221ec9f56c88e16d5b95f2}} 
+\index{easyAI@{easyAI}!incomingShot@{incomingShot}}
+\index{incomingShot@{incomingShot}!easyAI@{easyAI}}
+\doxysubsubsection{\texorpdfstring{incomingShot()}{incomingShot()}}
+{\footnotesize\ttfamily void easy\+A\+I\+::incoming\+Shot (\begin{DoxyParamCaption}\item[{std\+::string}]{coords }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Updates Board to show current game status, prints message if hit, sunk, or missed. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to be fired. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+Convert Coordinates to array indeces.
+
+Check if hits empty water, a miss.
+
+Mark the miss on the map.\mbox{\Hypertarget{classeasy_a_i_abfa5245a5d11d7c1465718f7c1a8ceda}\label{classeasy_a_i_abfa5245a5d11d7c1465718f7c1a8ceda}} 
+\index{easyAI@{easyAI}!isShipSunk@{isShipSunk}}
+\index{isShipSunk@{isShipSunk}!easyAI@{easyAI}}
+\doxysubsubsection{\texorpdfstring{isShipSunk()}{isShipSunk()}}
+{\footnotesize\ttfamily bool easy\+A\+I\+::is\+Ship\+Sunk (\begin{DoxyParamCaption}\item[{char}]{ship\+Type }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Iterates through Board, simply setting is\+Sunk to false if it sees the specified ship marker. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+True if ship is sunk, otherwise false. 
+\end{DoxyReturn}
+Iterates through map, simply setting is\+Sunk to false if it sees the specified ship marker.\mbox{\Hypertarget{classeasy_a_i_a7f64bb53285d4717d10249786c1d658b}\label{classeasy_a_i_a7f64bb53285d4717d10249786c1d658b}} 
+\index{easyAI@{easyAI}!printAttackBoard@{printAttackBoard}}
+\index{printAttackBoard@{printAttackBoard}!easyAI@{easyAI}}
+\doxysubsubsection{\texorpdfstring{printAttackBoard()}{printAttackBoard()}}
+{\footnotesize\ttfamily void easy\+A\+I\+::print\+Attack\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Prints opposite player\textquotesingle{}s board. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+C\+O\+L\+U\+MN L\+A\+B\+E\+LS.\mbox{\Hypertarget{classeasy_a_i_a963ba96d1fd86f685f6b2ca970de6b8b}\label{classeasy_a_i_a963ba96d1fd86f685f6b2ca970de6b8b}} 
+\index{easyAI@{easyAI}!printBoard@{printBoard}}
+\index{printBoard@{printBoard}!easyAI@{easyAI}}
+\doxysubsubsection{\texorpdfstring{printBoard()}{printBoard()}}
+{\footnotesize\ttfamily void easy\+A\+I\+::print\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Prints board. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+C\+O\+L\+U\+MN L\+A\+B\+E\+LS.\mbox{\Hypertarget{classeasy_a_i_abedfc5668743e032bd6d90887945c8de}\label{classeasy_a_i_abedfc5668743e032bd6d90887945c8de}} 
+\index{easyAI@{easyAI}!validCoordinates@{validCoordinates}}
+\index{validCoordinates@{validCoordinates}!easyAI@{easyAI}}
+\doxysubsubsection{\texorpdfstring{validCoordinates()}{validCoordinates()}}
+{\footnotesize\ttfamily bool easy\+A\+I\+::valid\+Coordinates (\begin{DoxyParamCaption}\item[{std\+::string \&}]{coords }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Returns if valid position. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return true if coordinate valid, else false. 
+\end{DoxyReturn}
+Checks coordinate set is exactly a column and row with length.
+
+Uppercases first coordinate if necessary.
+
+Checks first is A-\/H, second is 1-\/8.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+easy\+A\+I.\+h\item 
+easy\+A\+I.\+cpp\end{DoxyCompactItemize}

@@ -1,158 +1,172 @@
+/// File Name Player.h.
+/// Assignment EECS 448 Project 2.
+/// Brief Defines Player functions.
+
 #ifndef Player_h
 #define Player_h
-#include "Ship.h"
+#include<iostream>
 
 class Player
 {
 public:
-  /**
-  * @pre: valid player object is created
-  * @post: initializes shipDirection and shipRow
-  * @param: none
-  * @return: nothing
-  **/
-  Player();
 
-  /**
-  * @pre: valid player object is created
-  * @post: creates the board for the respective player
-  * @param: none
-  * @return: nothing
-  **/
-  void createBoard();
+  /*!
+   \pre salvo mode selected.
+   \post creates board for player.
+   \return none.
+  */
 
-  /**
-  * @pre: valid player object is created
-  * @post: prints board to the respective player
-  * @param: none
-  * @return: nothing
-  **/
+  Player(bool salvo);
+
+  /*!
+   \pre board object is created.
+   \post board object is deleted.
+   \return none.
+  */
+
+  ~Player();
+
+  /*!
+   \pre board created, boats placed.
+   \post Prints board.
+   \return none.
+  */
+
   void printBoard();
 
-  /**
-  * @pre: valid player object is created
-  * @post: changes locations on players attack board depending on where the player chose to attack
-  * @param: row - the row where the player wants to attack
-  * @param: col - the column where the player wants to attack
-  * @return: nothing
-  **/
-  void fire(int row, char col);
+  /*!
+   \pre board created, boats placed.
+   \post Prints opposite player's board.
+   \return none.
+  */
 
-  /**
-  * @pre: verify input from user, and make sure the input for column is upper case.
-  * @post: find the location that user input
-  * @param: int row of coordinate
-  * @param: char column of coordinate
-  * @return: char array
-  **/
-  char find(int row, char col);
-
-  /**
-  * @pre: verify input from user, and make sure the input for column is upper case.
-  * @post: find the location that user inputs (on attack board))
-  * @param: int row and char column
-  * @return: char
-  **/
-  char findOnAttackBoard(int row, char col);
-
-  /**
-  * @pre: valid player object is created
-  * @post: setting number of ships for our private member variable
-  * @param: numShips - the number of ships the player is going to be placing on the board
-  * @return: nothing
-  **/
-  void setShipCount(int numShips);
-
-  /**
-  * @pre: valid player object is created
-  * @post: sets the ships on the board and changes all valid coordinates to an 'S'
-  * @param: numbShips - the number of ships the player is going to be placing on the board
-  * @return: nothing
-  **/
-  void addShip(int numbShips);
-
-  /**
-  * @pre: valid player object is created
-  * @post: checks if the coordinates passed in are all within the board and of char '#'
-  * @param: shipRow - passed in row to check, shipColumn - passed in column to check, shipDirection - direction to check if valid, shipSize - size of the current ship of which to check
-  * @return: true or false depending on if the corresponding coordinates are valid
-  **/
-  bool validCoordinate(int shipRow, char shipColumn, std::string shipDirection, int shipSize);
-
-  /**
-  * @pre: valid player object is created
-  * @post: lets us know the respective int for every columns char
-  * @param: col - the column we want to convert to an integer
-  * @return: returns a char's corresponding int
-  **/
-  int convertColumn(char col);
-
-  /**
-  * @pre: valid player object is created
-  * @post: tells us if this player won
-  * @param: none
-  * @return: weather or not this player won
-  **/
-  bool checkForWin();
-
-  /**
-  * @pre: valid player object and attack board is created
-  * @post: prints the attack board for the respective player
-  * @param: none
-  * @return: nothing
-  **/
   void printAttackBoard();
 
-  /**
-  * @pre: int provided input
-  * @post: verifies if int is okay or not
-  * @param: int& checkInt - int to check if int or not
-  * @return: nothing
-  **/
-  void isInt(int& checkInt);
+  /*!
+   \pre Board created, boats placed, coordinates given.
+   \post Updates Board to show current game status, prints message if hit, sunk, or missed.
+   \param coords Coordinate to be fired.
+   \return none.
+  */
 
-  /**
-  * @pre: char provided input
-  * @post: verifies if char is okay or not
-  * @param: char& checkChar - character to check if char or not
-  * @return: nothing
-  **/
-  void isChar(char& checkChar);
+  void incomingShot(std::string coords);
 
-  /**
-  * @pre: int provided input
-  * @post: verifies if row integer is okay or not
-  * @param: int& checkRow - int to check if row is int or not
-  * @return: nothing
-  **/
-  void isRow(int& checkRow);
+  /*!
+   \pre Board created, boats placed, coordinates given.
+   \post converts coordinates to ints.
+   \param coords Coordinate to be converted for AI use.
+   \return coordinate for AI.
+  */
 
-  /**
-  * @pre: char provided input
-  * @post: verifies if column character is okay or not
-  * @param: char& checkColumn - int to check if column is char or not
-  * @return: nothing
-  **/
-  void isColumn(char& checkColumn);
+  char find(std::string coord);
 
+  /*!
+   \pre Board created and coordinates given.
+   \post Boat is placed onto the Board.
+   \param numbShips how many ships to place
+   \return none.
+  */
+
+  void addShips(int numbShips);
+
+  /*!
+   \pre Board created, boats placed, coordinates given.
+   \post Returns if valid position.
+   \param coords Coordinate to check.
+   \return Return true if coordinate valid, else false.
+  */
+
+  bool validCoordinates(std::string& coords);
+
+  /*!
+   \pre Board created, boats placed, coordinates given.
+   \post coordinate converted to int from char.
+   \param coords Coordinate to convert.
+   \return converted coord.
+  */
+
+  int convertCoordinate(char coord);
+
+  /*!
+   \pre Board created, boats placed.
+   \post Checks if there are any boats left on a Board, ends game.
+   \return True if there are no boats, else false.
+  */
+
+  bool gameOver();
+
+  /*!
+   \pre Board created, boats placed.
+   \post Iterates through Board, simply setting isSunk to false if it sees the specified ship marker.
+   \return True if ship is sunk, otherwise false.
+  */
+
+  bool isShipSunk(char shipType);
+
+  /*!
+   \pre Board created, boats placed.
+   \post gets game board.
+   \return the board.
+  */
+
+  char** getGameBoard();
+
+  /*!
+   \pre Board created, boats placed.
+   \post gets ship count.
+   \return how many ships used.
+  */
+
+  int getShipCount();
 
 private:
-  const static int m_rows = 9;
-  const static int m_cols = 9;
-  char gameBoard[m_cols][m_rows];
-  char attackBoard[m_cols][m_rows];
-  int m_shipCount = 0;
-  std::vector<Ship> m_ships;
-  std::string shipDirection;
-  int shipRow;
-  char shipColumn;
+  /// Number of rows.
+  const static int m_rows = 8;
 
-  /**
-  * @pre: valid player object exists
-  * @post: changes all string to upper case
-  * @param: std::string& word
-  * @return: nothing
-  **/
-  void changeCase(std::string& word);
+  /// Number of cols.
+  const static int m_cols = 8;
+
+  /// Pointer to board.
+  char** gameBoard;
+
+  /// How mant ships.
+  int m_shipCount = 0;
+
+  /// Mode used.
+  bool salvoMode = false;
+
+  /*!
+   \pre board created and coordinates given.
+   \post Returns true or false if ship length is correct.
+   \param start starting coordinate.
+   \param end ending coordinate.
+   \param length length of the ship.
+   \return true for corect length, else false.
+  */
+
+  bool checkShipLength(int length, std::string start, std::string end);
+
+  /*!
+   \pre board created and coordinates given.
+   \post Returns true or false if ship position is correct.
+   \param start starting coordinate.
+   \param end ending coordinate.
+   \return true if boat does not overlap another boat or out of bounds, else false.
+  */
+
+  bool checkShipPosition(std::string start, std::string end);
+
+  /*!
+   \pre board created and coordinates given.
+   \post places ship.
+   \param length length of the ship.
+   \param start starting coordinate.
+   \param end ending coordinate.
+   \return none
+  */
+
+  void placeShip(int length, std::string start, std::string end);
+
+
 };
-#endif /* Player_h */
+#endif

@@ -1,0 +1,191 @@
+\hypertarget{classexec}{}\doxysection{exec Class Reference}
+\label{classexec}\index{exec@{exec}}
+
+
+File Name\+: \mbox{\hyperlink{exec_8h_source}{exec.\+h}}.  
+
+
+
+
+{\ttfamily \#include $<$exec.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classexec_aad3ea9a2cd99fc28471062719b85b1f6}{run}} ()
+\begin{DoxyCompactList}\small\item\em File Name\+: exec.\+cpp. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classexec_a3db2c24d3acc4bda50d0db023492f25d}{pvp\+Regular}} ()
+\item 
+void \mbox{\hyperlink{classexec_a9e0cc4f97d3183bad94ffde1f0a7547d}{pvp\+Salvo}} ()
+\item 
+void \mbox{\hyperlink{classexec_a404c5b8535f1fea8db301e6a4833c251}{pve\+Easy}} ()
+\item 
+void \mbox{\hyperlink{classexec_a4f8e3a5465a0fd43e829d73f65011eb8}{pve\+Medium}} ()
+\item 
+void \mbox{\hyperlink{classexec_a8d82715e20590415e810681be3c2b1a3}{pve\+Hard}} ()
+\item 
+void \mbox{\hyperlink{classexec_ae7684756fb551d47cc2a6f91c0c99d48}{save\+History}} (int game\+Mode, int num\+Ships)
+\item 
+void \mbox{\hyperlink{classexec_a7351a653520f8250a903ec98c13413c5}{print\+History}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classexec_a3ef6fb19f71d8f9c1c4a73a61a392af0}\label{classexec_a3ef6fb19f71d8f9c1c4a73a61a392af0}} 
+int \mbox{\hyperlink{classexec_a3ef6fb19f71d8f9c1c4a73a61a392af0}{m\+\_\+num\+Ships}} = 0
+\begin{DoxyCompactList}\small\item\em Variable used to print ship count for history. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File Name\+: \mbox{\hyperlink{exec_8h_source}{exec.\+h}}. 
+
+Assignment\+: E\+E\+CS 448 Project 2. Brief\+: This program is the .h file for the exec class. It begins the game. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classexec_a7351a653520f8250a903ec98c13413c5}\label{classexec_a7351a653520f8250a903ec98c13413c5}} 
+\index{exec@{exec}!printHistory@{printHistory}}
+\index{printHistory@{printHistory}!exec@{exec}}
+\doxysubsubsection{\texorpdfstring{printHistory()}{printHistory()}}
+{\footnotesize\ttfamily void exec\+::print\+History (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+run function is called. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+prints contents of History.\+txt. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classexec_a404c5b8535f1fea8db301e6a4833c251}\label{classexec_a404c5b8535f1fea8db301e6a4833c251}} 
+\index{exec@{exec}!pveEasy@{pveEasy}}
+\index{pveEasy@{pveEasy}!exec@{exec}}
+\doxysubsubsection{\texorpdfstring{pveEasy()}{pveEasy()}}
+{\footnotesize\ttfamily void exec\+::pve\+Easy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+run function is called. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+beigns easy AI game. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+player 1 attacks player 2\textquotesingle{}s game board.
+
+player 2 attacks player 1\textquotesingle{}s game board.\mbox{\Hypertarget{classexec_a8d82715e20590415e810681be3c2b1a3}\label{classexec_a8d82715e20590415e810681be3c2b1a3}} 
+\index{exec@{exec}!pveHard@{pveHard}}
+\index{pveHard@{pveHard}!exec@{exec}}
+\doxysubsubsection{\texorpdfstring{pveHard()}{pveHard()}}
+{\footnotesize\ttfamily void exec\+::pve\+Hard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+run function is called. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+beigns hard AI game. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+player 1 attacks player 2\textquotesingle{}s game board.
+
+player 2 attacks player 1\textquotesingle{}s game board.\mbox{\Hypertarget{classexec_a4f8e3a5465a0fd43e829d73f65011eb8}\label{classexec_a4f8e3a5465a0fd43e829d73f65011eb8}} 
+\index{exec@{exec}!pveMedium@{pveMedium}}
+\index{pveMedium@{pveMedium}!exec@{exec}}
+\doxysubsubsection{\texorpdfstring{pveMedium()}{pveMedium()}}
+{\footnotesize\ttfamily void exec\+::pve\+Medium (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+run function is called. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+beigns medium AI game. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+player 1 attacks player 2\textquotesingle{}s game board.
+
+player 2 attacks player 1\textquotesingle{}s game board.\mbox{\Hypertarget{classexec_a3db2c24d3acc4bda50d0db023492f25d}\label{classexec_a3db2c24d3acc4bda50d0db023492f25d}} 
+\index{exec@{exec}!pvpRegular@{pvpRegular}}
+\index{pvpRegular@{pvpRegular}!exec@{exec}}
+\doxysubsubsection{\texorpdfstring{pvpRegular()}{pvpRegular()}}
+{\footnotesize\ttfamily void exec\+::pvp\+Regular (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+run function is called. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+beigns regular pvp game. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+player 1 attacks player 2\textquotesingle{}s game board.
+
+player 2 attacks player 1\textquotesingle{}s game board.\mbox{\Hypertarget{classexec_a9e0cc4f97d3183bad94ffde1f0a7547d}\label{classexec_a9e0cc4f97d3183bad94ffde1f0a7547d}} 
+\index{exec@{exec}!pvpSalvo@{pvpSalvo}}
+\index{pvpSalvo@{pvpSalvo}!exec@{exec}}
+\doxysubsubsection{\texorpdfstring{pvpSalvo()}{pvpSalvo()}}
+{\footnotesize\ttfamily void exec\+::pvp\+Salvo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+run function is called. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+beigns salvo pvp game. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+player 1 attacks player 2\textquotesingle{}s game board.
+
+player 1 attacks player 2\textquotesingle{}s game board.\mbox{\Hypertarget{classexec_aad3ea9a2cd99fc28471062719b85b1f6}\label{classexec_aad3ea9a2cd99fc28471062719b85b1f6}} 
+\index{exec@{exec}!run@{run}}
+\index{run@{run}!exec@{exec}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void exec\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+File Name\+: exec.\+cpp. 
+
+\begin{DoxyPrecond}{Precondition}
+code is launched. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+begins game. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none.
+\end{DoxyReturn}
+Assignment\+: E\+E\+CS 448 Project 2. Brief\+: This program is the .cpp file for the exec class. It runs the game. \mbox{\Hypertarget{classexec_ae7684756fb551d47cc2a6f91c0c99d48}\label{classexec_ae7684756fb551d47cc2a6f91c0c99d48}} 
+\index{exec@{exec}!saveHistory@{saveHistory}}
+\index{saveHistory@{saveHistory}!exec@{exec}}
+\doxysubsubsection{\texorpdfstring{saveHistory()}{saveHistory()}}
+{\footnotesize\ttfamily void exec\+::save\+History (\begin{DoxyParamCaption}\item[{int}]{game\+Mode,  }\item[{int}]{num\+Ships }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+a game is played. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+saves winning player name, game mode, and ship count to file. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Mode} & what type of game was played. \\
+\hline
+{\em num\+Ships} & how many ships were used \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+exec.\+h\item 
+exec.\+cpp\end{DoxyCompactItemize}

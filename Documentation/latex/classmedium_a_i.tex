@@ -1,0 +1,274 @@
+\hypertarget{classmedium_a_i}{}\doxysection{medium\+AI Class Reference}
+\label{classmedium_a_i}\index{mediumAI@{mediumAI}}
+
+
+File Name \mbox{\hyperlink{medium_a_i_8h_source}{medium\+A\+I.\+h}}.  
+
+
+
+
+{\ttfamily \#include $<$medium\+A\+I.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmedium_a_i_a85f887060cefd1a969a01a80c5592019}{medium\+AI}} ()
+\begin{DoxyCompactList}\small\item\em File Name medium\+A\+I.\+cpp. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmedium_a_i_afa210c8c057af5a8f8946e67d8727c88}{$\sim$medium\+AI}} ()
+\item 
+void \mbox{\hyperlink{classmedium_a_i_a7cbcfb94b74e2cc012578ad99d7ed357}{print\+Board}} ()
+\item 
+void \mbox{\hyperlink{classmedium_a_i_a8fd4da3bd92403fe7bec66f2c03196b8}{print\+Attack\+Board}} ()
+\item 
+void \mbox{\hyperlink{classmedium_a_i_ad7f3500d9e8336950f96fd9cff89a337}{incoming\+Shot}} (std\+::string coords)
+\item 
+std\+::string \mbox{\hyperlink{classmedium_a_i_a00296cd45660ab89146b5da8f8df4855}{fire\+On\+Player}} (\mbox{\hyperlink{class_player}{Player}} $\ast$\&player)
+\item 
+void \mbox{\hyperlink{classmedium_a_i_a9e9e508efb5561b6ec7f47ad8cbf3adf}{add\+Ships}} (int numb\+Ships)
+\item 
+bool \mbox{\hyperlink{classmedium_a_i_a3f9c5d1e9284463317b7c4a7af9bbdd2}{valid\+Coordinates}} (std\+::string \&coords)
+\item 
+int \mbox{\hyperlink{classmedium_a_i_a9a0c59329f5ce05ab9f356fc948da756}{convert\+Coordinate}} (char coord)
+\item 
+bool \mbox{\hyperlink{classmedium_a_i_a81f5c924d6c27b51266f848ffbe91459}{game\+Over}} ()
+\item 
+bool \mbox{\hyperlink{classmedium_a_i_a009b3d11baa8df944a6fc78ed8a0c711}{is\+Ship\+Sunk}} (char ship\+Type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File Name \mbox{\hyperlink{medium_a_i_8h_source}{medium\+A\+I.\+h}}. 
+
+Assignment E\+E\+CS 448 Project 2. Brief Defines medium AI functions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classmedium_a_i_a85f887060cefd1a969a01a80c5592019}\label{classmedium_a_i_a85f887060cefd1a969a01a80c5592019}} 
+\index{mediumAI@{mediumAI}!mediumAI@{mediumAI}}
+\index{mediumAI@{mediumAI}!mediumAI@{mediumAI}}
+\doxysubsubsection{\texorpdfstring{mediumAI()}{mediumAI()}}
+{\footnotesize\ttfamily medium\+A\+I\+::medium\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+File Name medium\+A\+I.\+cpp. 
+
+\begin{DoxyPrecond}{Precondition}
+hard AI mode selected. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+creates board for hard AI. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none.
+\end{DoxyReturn}
+Assignment E\+E\+CS 448 Project 2. Brief Implement medium AI functions. Creating the 2D array.\mbox{\Hypertarget{classmedium_a_i_afa210c8c057af5a8f8946e67d8727c88}\label{classmedium_a_i_afa210c8c057af5a8f8946e67d8727c88}} 
+\index{mediumAI@{mediumAI}!````~mediumAI@{$\sim$mediumAI}}
+\index{````~mediumAI@{$\sim$mediumAI}!mediumAI@{mediumAI}}
+\doxysubsubsection{\texorpdfstring{$\sim$mediumAI()}{~mediumAI()}}
+{\footnotesize\ttfamily medium\+A\+I\+::$\sim$medium\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\mbox{\hyperlink{classhard_a_i}{hard\+AI}} object is created. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\mbox{\hyperlink{classhard_a_i}{hard\+AI}} object is deleted. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmedium_a_i_a9e9e508efb5561b6ec7f47ad8cbf3adf}\label{classmedium_a_i_a9e9e508efb5561b6ec7f47ad8cbf3adf}} 
+\index{mediumAI@{mediumAI}!addShips@{addShips}}
+\index{addShips@{addShips}!mediumAI@{mediumAI}}
+\doxysubsubsection{\texorpdfstring{addShips()}{addShips()}}
+{\footnotesize\ttfamily void medium\+A\+I\+::add\+Ships (\begin{DoxyParamCaption}\item[{int}]{numb\+Ships }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created and coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Boat is placed onto the Board. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em numb\+Ships} & how many ships to place \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+0-\/Up, 1-\/Right, 2-\/Down, 3-\/Left.
+
+checks First Spot and going off board below.
+
+Up.
+
+Right.
+
+Down.
+
+Left.
+
+checks each position if it\textquotesingle{}s water.
+
+up.
+
+right.
+
+down.
+
+left.
+
+Places the Ships C,B,D,S,T.\mbox{\Hypertarget{classmedium_a_i_a9a0c59329f5ce05ab9f356fc948da756}\label{classmedium_a_i_a9a0c59329f5ce05ab9f356fc948da756}} 
+\index{mediumAI@{mediumAI}!convertCoordinate@{convertCoordinate}}
+\index{convertCoordinate@{convertCoordinate}!mediumAI@{mediumAI}}
+\doxysubsubsection{\texorpdfstring{convertCoordinate()}{convertCoordinate()}}
+{\footnotesize\ttfamily int medium\+A\+I\+::convert\+Coordinate (\begin{DoxyParamCaption}\item[{char}]{coord }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+coordinate converted to int from char. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+converted coord. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classmedium_a_i_a00296cd45660ab89146b5da8f8df4855}\label{classmedium_a_i_a00296cd45660ab89146b5da8f8df4855}} 
+\index{mediumAI@{mediumAI}!fireOnPlayer@{fireOnPlayer}}
+\index{fireOnPlayer@{fireOnPlayer}!mediumAI@{mediumAI}}
+\doxysubsubsection{\texorpdfstring{fireOnPlayer()}{fireOnPlayer()}}
+{\footnotesize\ttfamily std\+::string medium\+A\+I\+::fire\+On\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} $\ast$\&}]{player }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Gives coordinate for AI to fire on. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+coord to fire on. 
+\end{DoxyReturn}
+determine direction \textquotesingle{}up\textquotesingle{}, \textquotesingle{}down\textquotesingle{}, \textquotesingle{}left\textquotesingle{}, \textquotesingle{}right\textquotesingle{} that could find the next spot up the current ship.
+
+still has rounds left to shoot, but can\textquotesingle{}t find a spot. Then go back to the original hit spot, and try the opposite direction.\mbox{\Hypertarget{classmedium_a_i_a81f5c924d6c27b51266f848ffbe91459}\label{classmedium_a_i_a81f5c924d6c27b51266f848ffbe91459}} 
+\index{mediumAI@{mediumAI}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!mediumAI@{mediumAI}}
+\doxysubsubsection{\texorpdfstring{gameOver()}{gameOver()}}
+{\footnotesize\ttfamily bool medium\+A\+I\+::game\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Checks if there are any boats left on a Board, ends game. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+True if there are no boats, else false. 
+\end{DoxyReturn}
+Iterates through map, simply setting over to false if it sees a ship marker.\mbox{\Hypertarget{classmedium_a_i_ad7f3500d9e8336950f96fd9cff89a337}\label{classmedium_a_i_ad7f3500d9e8336950f96fd9cff89a337}} 
+\index{mediumAI@{mediumAI}!incomingShot@{incomingShot}}
+\index{incomingShot@{incomingShot}!mediumAI@{mediumAI}}
+\doxysubsubsection{\texorpdfstring{incomingShot()}{incomingShot()}}
+{\footnotesize\ttfamily void medium\+A\+I\+::incoming\+Shot (\begin{DoxyParamCaption}\item[{std\+::string}]{coords }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Updates Board to show current game status, prints message if hit, sunk, or missed. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to be fired. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+Convert Coordinates to array indeces.
+
+Check if hits empty water, a miss.
+
+Mark the miss on the map.\mbox{\Hypertarget{classmedium_a_i_a009b3d11baa8df944a6fc78ed8a0c711}\label{classmedium_a_i_a009b3d11baa8df944a6fc78ed8a0c711}} 
+\index{mediumAI@{mediumAI}!isShipSunk@{isShipSunk}}
+\index{isShipSunk@{isShipSunk}!mediumAI@{mediumAI}}
+\doxysubsubsection{\texorpdfstring{isShipSunk()}{isShipSunk()}}
+{\footnotesize\ttfamily bool medium\+A\+I\+::is\+Ship\+Sunk (\begin{DoxyParamCaption}\item[{char}]{ship\+Type }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Iterates through Board, simply setting is\+Sunk to false if it sees the specified ship marker. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+True if ship is sunk, otherwise false. 
+\end{DoxyReturn}
+Iterates through map, simply setting is\+Sunk to false if it sees the specified ship marker.\mbox{\Hypertarget{classmedium_a_i_a8fd4da3bd92403fe7bec66f2c03196b8}\label{classmedium_a_i_a8fd4da3bd92403fe7bec66f2c03196b8}} 
+\index{mediumAI@{mediumAI}!printAttackBoard@{printAttackBoard}}
+\index{printAttackBoard@{printAttackBoard}!mediumAI@{mediumAI}}
+\doxysubsubsection{\texorpdfstring{printAttackBoard()}{printAttackBoard()}}
+{\footnotesize\ttfamily void medium\+A\+I\+::print\+Attack\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Prints opposite player\textquotesingle{}s board. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classmedium_a_i_a7cbcfb94b74e2cc012578ad99d7ed357}\label{classmedium_a_i_a7cbcfb94b74e2cc012578ad99d7ed357}} 
+\index{mediumAI@{mediumAI}!printBoard@{printBoard}}
+\index{printBoard@{printBoard}!mediumAI@{mediumAI}}
+\doxysubsubsection{\texorpdfstring{printBoard()}{printBoard()}}
+{\footnotesize\ttfamily void medium\+A\+I\+::print\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Prints board. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+C\+O\+L\+U\+MN L\+A\+B\+E\+LS.\mbox{\Hypertarget{classmedium_a_i_a3f9c5d1e9284463317b7c4a7af9bbdd2}\label{classmedium_a_i_a3f9c5d1e9284463317b7c4a7af9bbdd2}} 
+\index{mediumAI@{mediumAI}!validCoordinates@{validCoordinates}}
+\index{validCoordinates@{validCoordinates}!mediumAI@{mediumAI}}
+\doxysubsubsection{\texorpdfstring{validCoordinates()}{validCoordinates()}}
+{\footnotesize\ttfamily bool medium\+A\+I\+::valid\+Coordinates (\begin{DoxyParamCaption}\item[{std\+::string \&}]{coords }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Returns if valid position. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return true if coordinate valid, else false. 
+\end{DoxyReturn}
+Checks coordinate set is exactly a column and row with length.
+
+Uppercases first coordinate if necessary.
+
+Checks first is A-\/H, second is 1-\/8.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+medium\+A\+I.\+h\item 
+medium\+A\+I.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,289 @@
+\hypertarget{classhard_a_i}{}\doxysection{hard\+AI Class Reference}
+\label{classhard_a_i}\index{hardAI@{hardAI}}
+
+
+File Name \mbox{\hyperlink{hard_a_i_8h_source}{hard\+A\+I.\+h}}.  
+
+
+
+
+{\ttfamily \#include $<$hard\+A\+I.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhard_a_i_a426e4957bcf90e6aaf84d4c7d263f2e4}{hard\+AI}} ()
+\begin{DoxyCompactList}\small\item\em File Name hard\+A\+I.\+cpp. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhard_a_i_aee658372aebfc1ac0b558e3f60973819}{$\sim$hard\+AI}} ()
+\item 
+void \mbox{\hyperlink{classhard_a_i_a212516791f2c2a20cfe4697d2a947b99}{print\+Board}} ()
+\item 
+void \mbox{\hyperlink{classhard_a_i_a00d74258d79e552b5ef5c59831c035bf}{print\+Attack\+Board}} ()
+\item 
+void \mbox{\hyperlink{classhard_a_i_ab800f992bf01559b3f15f0e8e38f4755}{incoming\+Shot}} (std\+::string coords)
+\item 
+std\+::string \mbox{\hyperlink{classhard_a_i_a3d6b6f23820d790fbe6e4309e006e2cd}{fire\+On\+Player}} ()
+\item 
+void \mbox{\hyperlink{classhard_a_i_a2e7f6ed3bab1d8706a34439b8df37ea3}{add\+Ships}} (int numb\+Ships)
+\item 
+bool \mbox{\hyperlink{classhard_a_i_a5f4479f6a4961e492ccb9806a554f445}{valid\+Coordinates}} (std\+::string \&coords)
+\item 
+int \mbox{\hyperlink{classhard_a_i_a40880c2e6ad9fe8613f8a7623d3ba586}{convert\+Coordinate}} (char coord)
+\item 
+bool \mbox{\hyperlink{classhard_a_i_a3599394878536cd6a31c2f9ab75bbceb}{game\+Over}} ()
+\item 
+bool \mbox{\hyperlink{classhard_a_i_aa643c30be26a5355957333805eff7221}{is\+Ship\+Sunk}} (char ship\+Type)
+\item 
+void \mbox{\hyperlink{classhard_a_i_a925a431672d072b6488c5f7dc534086f}{get\+And\+Store\+Opponent\+Board}} (\mbox{\hyperlink{class_player}{Player}} $\ast$\&player)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File Name \mbox{\hyperlink{hard_a_i_8h_source}{hard\+A\+I.\+h}}. 
+
+Assignment E\+E\+CS 448 Project 2. Brief Defines hard AI functions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classhard_a_i_a426e4957bcf90e6aaf84d4c7d263f2e4}\label{classhard_a_i_a426e4957bcf90e6aaf84d4c7d263f2e4}} 
+\index{hardAI@{hardAI}!hardAI@{hardAI}}
+\index{hardAI@{hardAI}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{hardAI()}{hardAI()}}
+{\footnotesize\ttfamily hard\+A\+I\+::hard\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+File Name hard\+A\+I.\+cpp. 
+
+\begin{DoxyPrecond}{Precondition}
+hard AI mode selected. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+creates board for hard AI. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none.
+\end{DoxyReturn}
+Assignment E\+E\+CS 448 Project 2. Brief Implements hard AI functions. Creating the 2D array.\mbox{\Hypertarget{classhard_a_i_aee658372aebfc1ac0b558e3f60973819}\label{classhard_a_i_aee658372aebfc1ac0b558e3f60973819}} 
+\index{hardAI@{hardAI}!````~hardAI@{$\sim$hardAI}}
+\index{````~hardAI@{$\sim$hardAI}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{$\sim$hardAI()}{~hardAI()}}
+{\footnotesize\ttfamily hard\+A\+I\+::$\sim$hard\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\mbox{\hyperlink{classhard_a_i}{hard\+AI}} object is created. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\mbox{\hyperlink{classhard_a_i}{hard\+AI}} object is deleted. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classhard_a_i_a2e7f6ed3bab1d8706a34439b8df37ea3}\label{classhard_a_i_a2e7f6ed3bab1d8706a34439b8df37ea3}} 
+\index{hardAI@{hardAI}!addShips@{addShips}}
+\index{addShips@{addShips}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{addShips()}{addShips()}}
+{\footnotesize\ttfamily void hard\+A\+I\+::add\+Ships (\begin{DoxyParamCaption}\item[{int}]{numb\+Ships }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created and coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Boat is placed onto the Board. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em numb\+Ships} & how many ships to place \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+0-\/Up, 1-\/Right, 2-\/Down, 3-\/Left.
+
+checks First Spot and going off board below.
+
+Up.
+
+Right.
+
+Down.
+
+Left.
+
+checks each position if it\textquotesingle{}s water.
+
+up.
+
+right.
+
+down.
+
+left.
+
+Places the Ships C,B,D,S,T.\mbox{\Hypertarget{classhard_a_i_a40880c2e6ad9fe8613f8a7623d3ba586}\label{classhard_a_i_a40880c2e6ad9fe8613f8a7623d3ba586}} 
+\index{hardAI@{hardAI}!convertCoordinate@{convertCoordinate}}
+\index{convertCoordinate@{convertCoordinate}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{convertCoordinate()}{convertCoordinate()}}
+{\footnotesize\ttfamily int hard\+A\+I\+::convert\+Coordinate (\begin{DoxyParamCaption}\item[{char}]{coord }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+coordinate converted to int from char. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+converted coord. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classhard_a_i_a3d6b6f23820d790fbe6e4309e006e2cd}\label{classhard_a_i_a3d6b6f23820d790fbe6e4309e006e2cd}} 
+\index{hardAI@{hardAI}!fireOnPlayer@{fireOnPlayer}}
+\index{fireOnPlayer@{fireOnPlayer}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{fireOnPlayer()}{fireOnPlayer()}}
+{\footnotesize\ttfamily std\+::string hard\+A\+I\+::fire\+On\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Gives coordinate for AI to fire on. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+coord to fire on. 
+\end{DoxyReturn}
+returns a coordinate for AI to fire on.\mbox{\Hypertarget{classhard_a_i_a3599394878536cd6a31c2f9ab75bbceb}\label{classhard_a_i_a3599394878536cd6a31c2f9ab75bbceb}} 
+\index{hardAI@{hardAI}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{gameOver()}{gameOver()}}
+{\footnotesize\ttfamily bool hard\+A\+I\+::game\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Checks if there are any boats left on a Board, ends game. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+True if there are no boats, else false. 
+\end{DoxyReturn}
+Iterates through map, simply setting over to false if it sees a ship marker.\mbox{\Hypertarget{classhard_a_i_a925a431672d072b6488c5f7dc534086f}\label{classhard_a_i_a925a431672d072b6488c5f7dc534086f}} 
+\index{hardAI@{hardAI}!getAndStoreOpponentBoard@{getAndStoreOpponentBoard}}
+\index{getAndStoreOpponentBoard@{getAndStoreOpponentBoard}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{getAndStoreOpponentBoard()}{getAndStoreOpponentBoard()}}
+{\footnotesize\ttfamily void hard\+A\+I\+::get\+And\+Store\+Opponent\+Board (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_player}{Player}} $\ast$\&}]{player }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, player boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+stores positions of opponent\textquotesingle{}s boats. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classhard_a_i_ab800f992bf01559b3f15f0e8e38f4755}\label{classhard_a_i_ab800f992bf01559b3f15f0e8e38f4755}} 
+\index{hardAI@{hardAI}!incomingShot@{incomingShot}}
+\index{incomingShot@{incomingShot}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{incomingShot()}{incomingShot()}}
+{\footnotesize\ttfamily void hard\+A\+I\+::incoming\+Shot (\begin{DoxyParamCaption}\item[{std\+::string}]{coords }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Updates Board to show current game status, prints message if hit, sunk, or missed. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to be fired. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+Convert Coordinates to array indeces.
+
+Check if hits empty water, a miss.
+
+Mark the miss on the map.\mbox{\Hypertarget{classhard_a_i_aa643c30be26a5355957333805eff7221}\label{classhard_a_i_aa643c30be26a5355957333805eff7221}} 
+\index{hardAI@{hardAI}!isShipSunk@{isShipSunk}}
+\index{isShipSunk@{isShipSunk}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{isShipSunk()}{isShipSunk()}}
+{\footnotesize\ttfamily bool hard\+A\+I\+::is\+Ship\+Sunk (\begin{DoxyParamCaption}\item[{char}]{ship\+Type }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Iterates through Board, simply setting is\+Sunk to false if it sees the specified ship marker. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+True if ship is sunk, otherwise false. 
+\end{DoxyReturn}
+Iterates through map, simply setting is\+Sunk to false if it sees the specified ship marker.\mbox{\Hypertarget{classhard_a_i_a00d74258d79e552b5ef5c59831c035bf}\label{classhard_a_i_a00d74258d79e552b5ef5c59831c035bf}} 
+\index{hardAI@{hardAI}!printAttackBoard@{printAttackBoard}}
+\index{printAttackBoard@{printAttackBoard}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{printAttackBoard()}{printAttackBoard()}}
+{\footnotesize\ttfamily void hard\+A\+I\+::print\+Attack\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Prints opposite player\textquotesingle{}s board. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+C\+O\+L\+U\+MN L\+A\+B\+E\+LS.\mbox{\Hypertarget{classhard_a_i_a212516791f2c2a20cfe4697d2a947b99}\label{classhard_a_i_a212516791f2c2a20cfe4697d2a947b99}} 
+\index{hardAI@{hardAI}!printBoard@{printBoard}}
+\index{printBoard@{printBoard}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{printBoard()}{printBoard()}}
+{\footnotesize\ttfamily void hard\+A\+I\+::print\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+board created, boats placed. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Prints board. 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+C\+O\+L\+U\+MN L\+A\+B\+E\+LS.\mbox{\Hypertarget{classhard_a_i_a5f4479f6a4961e492ccb9806a554f445}\label{classhard_a_i_a5f4479f6a4961e492ccb9806a554f445}} 
+\index{hardAI@{hardAI}!validCoordinates@{validCoordinates}}
+\index{validCoordinates@{validCoordinates}!hardAI@{hardAI}}
+\doxysubsubsection{\texorpdfstring{validCoordinates()}{validCoordinates()}}
+{\footnotesize\ttfamily bool hard\+A\+I\+::valid\+Coordinates (\begin{DoxyParamCaption}\item[{std\+::string \&}]{coords }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+Board created, boats placed, coordinates given. 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Returns if valid position. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & Coordinate to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return true if coordinate valid, else false. 
+\end{DoxyReturn}
+Checks coordinate set is exactly a column and row with length.
+
+Uppercases first coordinate if necessary.
+
+Checks first is A-\/H, second is 1-\/8.
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+hard\+A\+I.\+h\item 
+hard\+A\+I.\+cpp\end{DoxyCompactItemize}
