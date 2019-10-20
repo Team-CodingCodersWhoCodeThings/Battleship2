@@ -1,5 +1,7 @@
 Works Cited
 
+aLatif01. “aLatif01/Battleship.” GitHub, 25 Sept. 2019, github.com/aLatif01/Battleship. Inherited code base.
+
 cplusplus. “Std::Fstream.” Cplusplus.com, 2011, www.cplusplus.com/reference/fstream/fstream/. Library used to save game history. (fstream)
 
 cplusplus. Cplusplus.com, 2011, www.cplusplus.com/reference/iostream/. Library used for printing to the terminal and getting user input. (iostream)
