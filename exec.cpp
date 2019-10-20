@@ -518,6 +518,35 @@ void exec::pveHard()
 
 void exec::saveHistory(int gameMode, int numShips)
 {
-  std::cout<<gameMode<<'\n';
-  std::cout<<numShips<<'\n';
+  std::string playerName;
+  std::cout<<"Input name of winning player: ";
+  std::cin>>playerName;
+  std::cout<<'\n';
+  std::string mode;
+
+  if(gameMode == 1)
+  {
+    mode = "PvP Regular";
+  }
+  else if(gameMode == 2)
+  {
+    mode = "PvP Salvo";
+  }
+  else if(gameMode == 3)
+  {
+    mode = "AI Easy";
+  }
+  else if (gameMode == 4)
+  {
+    mode = "AI Medium";
+  }
+  else
+  {
+    mode = "AI Hard";
+  }
+
+  std::ofstream outFile;
+  outFile.open("History.txt", std::ios_base::app);
+  outFile<<playerName<<'\t'<<mode<<'\t'<<numShips<<'\n';
+  outFile.close();
 }
