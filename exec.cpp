@@ -28,7 +28,7 @@ void exec::run()
     {
       std::cout << "Which do you choose? Option: ";
       std::cin >> menuInput;
-      if(menuInput == "1" || "2" || "3" || "4" || "5")
+      if(menuInput == "1" || menuInput =="2" || menuInput =="3" || menuInput =="4" || menuInput =="5")
       {
         badMenuInput = false;
       }
@@ -46,7 +46,7 @@ void exec::run()
       {
         std::cout << "Which do you choose? Option: ";
         std::cin >> menuInput;
-        if(menuInput == "1" || "2")
+        if(menuInput == "1" || menuInput == "2")
         {
           badMenuInput = false;
         }
@@ -81,7 +81,7 @@ void exec::run()
       {
         std::cout << "Which do you choose? Option: ";
         std::cin >> menuInput;
-        if(menuInput == "1" || "2" || "3")
+        if(menuInput == "1" || menuInput == "2" || menuInput == "3")
         {
           badMenuInput = false;
         }
@@ -139,7 +139,7 @@ void exec::pvpRegular()
   {
     std::cout << "How many ships do you want to play with (1 - 5)? ";
     std::cin >> numberShips;
-    if(numberShips[0] == '1' || '2' || '3' || '4' || '5')
+    if(numberShips[0] == '1' || numberShips[0] == '2' || numberShips[0] == '3' || numberShips[0] == '4' || numberShips[0] == '5')
     {
       badMenuInput = false;
     }
@@ -225,7 +225,7 @@ void exec::pvpSalvo()
   {
     std::cout << "How many ships do you want to play with (1 - 5)? ";
     std::cin >> numberShips;
-    if(numberShips[0] == '1' || '2' || '3' || '4' || '5')
+    if(numberShips[0] == '1' || numberShips[0] == '2' || numberShips[0] == '3' || numberShips[0] == '4' || numberShips[0] == '5')
     {
       badMenuInput = false;
     }
@@ -321,7 +321,7 @@ void exec::pveEasy()
   {
     std::cout << "How many ships do you want to play with (1 - 5)? ";
     std::cin >> numberShips;
-    if(numberShips[0] == '1' || '2' || '3' || '4' || '5')
+    if(numberShips[0] == '1' || numberShips[0] == '2' || numberShips[0] == '3' || numberShips[0] == '4' || numberShips[0] == '5')
     {
       badMenuInput = false;
     }
@@ -389,7 +389,7 @@ void exec::pveMedium()
   {
     std::cout << "How many ships do you want to play with (1 - 5)? ";
     std::cin >> numberShips;
-    if(numberShips[0] == '1' || '2' || '3' || '4' || '5')
+    if(numberShips[0] == '1' || numberShips[0] == '2' || numberShips[0] == '3' || numberShips[0] == '4' || numberShips[0] == '5')
     {
       badMenuInput = false;
     }
@@ -457,7 +457,7 @@ void exec::pveHard()
   {
     std::cout << "How many ships do you want to play with (1 - 5)? ";
     std::cin >> numberShips;
-    if(numberShips[0] == '1' || '2' || '3' || '4' || '5')
+    if(numberShips[0] == '1' || numberShips[0] == '2' || numberShips[0] == '3' || numberShips[0] == '4' || numberShips[0] == '5')
     {
       badMenuInput = false;
     }
