@@ -570,7 +570,7 @@ void exec::saveHistory(int gameMode, int numShips)
 
   std::ofstream outFile;
   outFile.open("History.txt", std::ios_base::app);
-  outFile<<playerName<<'\t'<<mode<<'\t'<<numShips<<'\n';
+  outFile<<playerName<<"\t\t\t"<<mode<<"\t\t\t"<<numShips<<'\n';
   outFile.close();
 }
 
