@@ -1,4 +1,3 @@
-Player	Mode	Ship_Count
+Winning Player:          Mode:            Ship_Count:
 
-player1	PvP Regular	1
-AI	AI Hard	1
+ASDfzxv			AI Hard			1
