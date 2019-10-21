@@ -121,8 +121,6 @@ void exec::run()
       std::cout << std::endl;
       saveHistory(gameMode, m_numShips);
 
-
-
     }
     else if(menuInput == "3")
     {
@@ -146,6 +144,14 @@ void exec::run()
     }
   }
   std::cout << "Thanks for playing!\n\n";
+        std::cout << "                                  )___(\n";
+      std::cout << "                           _______/__/_\n";
+      std::cout << "                  ___     /===========|   ___\n";
+      std::cout << " ____       __   [\\\\]___/____________|__[///]   __\n";
+      std::cout << " \\   \\_____[\\\\]__/___________________________\\__[//]___\n";
+      std::cout << "  \\448                                                 |\n";
+      std::cout << "   \\                                                  /\n";
+      std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n";
 }
 
 void exec::pvpRegular()
