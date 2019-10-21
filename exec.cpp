@@ -19,6 +19,14 @@ void exec::run()
   bool stillPlaying = true;
   while(stillPlaying)
   {
+    std::cout << "\n\n  ____        _   _   _           _     _       \n";
+    std::cout << " |  _ \\      | | | | | |         | |   (_)      \n";
+    std::cout << " | |_) | __ _| |_| |_| | ___  ___| |__  _ _ __  \n";
+    std::cout << " |  _ < / _` | __| __| |/ _ \\/ __| '_ \\| | '_ \\ \n";
+    std::cout << " | |_) | (_| | |_| |_| |  __/\\__ \\ | | | | |_) |\n";
+    std::cout << " |____/ \\__,_|\\__|\\__|_|\\___||___/_| |_|_| .__/ \n";
+    std::cout << "                                         | |    \n";
+    std::cout << "                                         |_|    \n";
     std::cout << "\n\nWelcome to Battleship!\n\n";
     std::cout << "Please pick an option 1-5:\n";
     std::cout << "1. Play against a friend\n";
