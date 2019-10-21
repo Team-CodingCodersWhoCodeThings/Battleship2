@@ -324,6 +324,8 @@ void exec::pvpSalvo()
     }
     std::this_thread::sleep_for(interval);
   }
+  delete player1;
+  delete player2;
 }
 
 void exec::pveEasy()
