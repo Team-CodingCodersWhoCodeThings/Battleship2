@@ -118,6 +118,7 @@ void exec::run()
         gameMode = 5;
       }
 
+      std::cout << std::endl;
       saveHistory(gameMode, m_numShips);
 
 
